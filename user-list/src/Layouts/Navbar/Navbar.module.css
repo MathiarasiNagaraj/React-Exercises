@@ -1,0 +1,5 @@
+/* navbar styles starts */
+.navbar{
+    display: flex;
+    list-style-type: none;
+}

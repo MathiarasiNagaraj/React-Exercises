@@ -1,0 +1,17 @@
+/* link styles starts */
+.navListItem{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    background-color: #fff;
+    border: none;
+    padding: 18px 25px;
+    color:#515667;
+    cursor: pointer;
+}
+/* style for active link */
+.active{
+    background-color: #839fff;
+    border-radius: 10px;
+    color: #ffffff;
+}

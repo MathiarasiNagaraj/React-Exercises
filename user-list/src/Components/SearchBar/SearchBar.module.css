@@ -1,0 +1,14 @@
+/* searchbox style start */
+.searchBox {
+  display: flex;
+  align-items: center;
+  border: 1px solid #9e9a9a;
+  border-radius: 3px;
+  width: 442px;
+  padding: 6px;
+}
+/* search icon style start */
+.searchIcon {
+  font-size: 30px;
+  margin-left: 10px;
+}

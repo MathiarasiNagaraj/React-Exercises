@@ -1,0 +1,31 @@
+/* user card style start */
+.userCard {
+  display: flex;
+  width: 32%;
+  gap: 20px;
+  padding: 25px;
+  border-radius: 19px;
+  background-color: #fbfcff;
+}
+/* hover style for card */
+.userCard:hover {
+  border: 2px solid #d7ddef;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+/* margin for center cards */
+.userCard:nth-of-type(3n + 2) {
+  margin: 0px 9px;
+}
+/* user-detail box style start */
+.detailBox {
+  margin: 20px;
+  margin-bottom: 0;
+}
+/* username style start */
+.userName {
+  font-family: "Merriweather", serif;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,7 @@
+/* style for search input box */
+.search-box{
+    padding: 20px 10px;
+    border: none;
+    outline: none;
+    font-size: 17px;
+}

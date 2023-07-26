@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Lelah Nichols",
+    "city": "Troy",
+    "state": "MI",
+    "profile": "https://images.pexels.com/photos/3796217/pexels-photo-3796217.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "interest": ["clothes", "stem"]
+  },
+  {
+    "name": "Jesus Weiss",
+    "city": "Fort Worth",
+    "state": "TX",
+    "profile": "https://images.pexels.com/photos/6608313/pexels-photo-6608313.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "interest": ["headset", "gadget", "speed", "winter"]
+  },
+  {
+    "name": "Annie Rice",
+    "city": "Austin",
+    "state": "TX",
+    "profile": "https://images.pexels.com/photos/3796217/pexels-photo-3796217.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "interest": ["road", "mountain", "trip", "earth", "nature"]
+  },
+  {
+    "name": "Robert Broweer",
+    "city": "Cincinnati",
+    "state": "OH",
+    "profile": "https://images.pexels.com/photos/8090137/pexels-photo-8090137.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "interest": ["maintenance", "gears", "frames", "repair"]
+  },
+  {
+    "name": "Amy Campbell",
+    "city": "Warrior",
+    "state": "AL",
+    "profile": "https://images.pexels.com/photos/8129903/pexels-photo-8129903.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "interest": ["music", "disks"]
+  },
+  {
+    "name": "Anthony S.Morin",
+    "city": "Lyndhurst",
+    "state": "NJ",
+    "profile": "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "interest": ["vintage", "electric"]
+  },
+  {
+    "name": "Anthonyi S.Morine",
+    "city": "Lyndhurst",
+    "state": "NJ",
+    "profile": "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "interest": ["vintage", "electric"]
+  },
+  {
+    "name": "Anthonee S.Morin",
+    "city": "Lyndhurst",
+    "state": "NJ",
+    "profile": "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "interest": ["vintage", "electric","cars", "bike","flowers", "garden"]
+  }
+]

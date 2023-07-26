@@ -1,0 +1,8 @@
+/* user-container style start */
+.userContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  row-gap: 25px;
+margin-bottom: 100px;
+}

@@ -1,0 +1,17 @@
+/* tag conatiner style start */
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  gap: 7px;
+
+}
+/* tag style start */
+.tag {
+  border: 1px solid #87a0ce;
+  border-radius: 20px;
+  padding: 3px 10px;
+  color: #899be1;
+  font-weight: 500;
+  background-color: #ffffff;
+}
