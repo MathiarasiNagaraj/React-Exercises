@@ -1,0 +1,37 @@
+.touristcard {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 32%;
+  justify-content: flex-start;
+  font-family: "IBM Plex Sans", sans-serif;
+  color: #111;
+  .title {
+    font-weight: 100;
+    font-size: 35px;
+    margin-top: 20px;
+  }
+  .city {
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  .placeDescripiton {
+    font-size: 19px;
+    line-height: 1.5;
+    height: 230px;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 8;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-top: 25px;
+    color: #2c2c2c;
+    font-weight: 400;
+  }
+
+  .touristProfile {
+    height: 360px;
+    width: 480px;
+  }
+}

@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 87%;
+  margin: 88px auto;
+  margin-bottom: 85px;
+
+ .containerTitle {
+  text-align: left;
+  color: #7a1054;
+  font-size: 45px;
+  font-weight: 700;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+.containerDescription{
+  text-align: left;
+  color: #aa6892;
+  font-weight: 400;
+  font-size: 25px;
+  margin-bottom: 50px;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 90px;
+  column-gap: 30px;
+}
+}
+
+
+

@@ -1,0 +1,47 @@
+
+/* Chrome, Safari, Edge, Opera */
+.dropdown {
+	padding: 25px;
+	font-size: 20px;
+	color: #9f9d9d;
+	width: 710px;
+	background-color:#f7f7f7;
+	border-color: #a9a9a9;
+}
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: url('../../../public/assets/images/arrow.png') 96% / 2% no-repeat #fff;
+	outline: none;
+}
+input {
+	&::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+	&::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+}
+.errorBar {
+	font-size: 18px;
+	color:red;
+  } 
+  .home {
+	padding: 25px;
+	font-size: 20px;
+	color: #9f9d9d;
+	width: 710px;
+	background-color:#f7f7f7;
+	border-color: #a9a9a9;
+    width: 708px;
+    font-size: 18px;
+    position: absolute;
+    outline: none;
+    border: 1.5px solid #111;
+    margin-top: 2px;
+    background-color:#fff;
+  };

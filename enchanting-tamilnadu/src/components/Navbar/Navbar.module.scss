@@ -1,0 +1,15 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px 65px;
+//logo style start
+    img{
+        height: 37px;
+        cursor: pointer;
+    }
+    //list style start
+    ul{
+        list-style-type:none;
+    }
+}

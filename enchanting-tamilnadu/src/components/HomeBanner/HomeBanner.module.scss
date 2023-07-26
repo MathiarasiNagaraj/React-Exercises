@@ -1,0 +1,45 @@
+
+.posterContent {
+	padding: 20px;
+	padding-top: 170px;
+	padding-left: 150px;
+	padding-right: 30px;
+	flex-basis: 38%;
+
+	h4 {
+		font-size: 25px;
+		font-weight: 400;
+		color: #9b4e7f;
+		letter-spacing: -1px;
+		font-family: "IBM Plex Sans", sans-serif;
+	}
+	span {
+		font-weight: 700;
+	}
+ h2 {
+	font-family: "IBM Plex Sans", sans-serif;
+    font-size: 67px;
+    color: #7a1054;
+    font-weight: 300;
+    margin-top: 35px;
+    line-height: 1.3;
+  }
+  select{
+	padding: 25px;
+	font-size: 20px;
+	color: #9f9d9d;
+	width: 710px;
+	background-color:#f7f7f7;
+	border-color: #a9a9a9;
+    width: 708px;
+    font-size: 18px;
+    position: absolute;
+    outline: none;
+    border: 1.5px solid #111;
+    margin-top: 2px;
+    background-color:#fff;
+  };
+  button{
+	margin-top: 100px;
+  }
+}

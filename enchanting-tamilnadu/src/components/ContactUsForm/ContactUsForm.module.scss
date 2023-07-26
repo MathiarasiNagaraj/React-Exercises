@@ -1,0 +1,36 @@
+
+.form {
+	background-color:#f7f7f7;
+	padding: 52px 20px;
+  padding-bottom: 95px;
+  font-family: "IBM Plex Sans", sans-serif;
+	h2 {
+		font-size: 50px;
+		font-weight: 500;
+		color:#7a1054;
+	}
+	p {
+		font-size: 25px;
+		font-weight: 400;
+		color: #9f5483;
+    margin-bottom: 10px;
+	}
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 42%;
+    padding-top: 30px;
+    margin: 0 auto;
+  }
+  label {
+    margin-top: 30px;
+    margin-bottom: 4px;
+    font-size: 23px;
+    font-weight: 500;
+  }
+  
+
+.submit {
+    padding: "10px 33px",
+  };
+}

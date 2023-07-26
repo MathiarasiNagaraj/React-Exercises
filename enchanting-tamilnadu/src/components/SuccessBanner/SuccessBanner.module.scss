@@ -1,0 +1,17 @@
+//banner style start
+.banner {
+  background-color: #7a1054;
+  padding: 20px 40px;
+  width: 55%;
+  margin: 20px auto;
+  //para style start
+  p {
+    color: #ffff;
+    font-size: 25px;
+    font-weight: 200;
+    font-family: "IBM Plex Sans", sans-serif;
+    span{
+      font-weight: 500;
+    }
+  }
+}
