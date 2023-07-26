@@ -1,0 +1,14 @@
+$lightgrey: #eeeeee;
+
+.footer {
+	height: 50px;
+	background-color: $lightgrey;
+	font-weight: 300;
+	font-size: 16px;
+   display: flex;
+   align-items: center;
+   margin-top: 50px;
+   p{
+    margin-left: 152px;
+   }
+}

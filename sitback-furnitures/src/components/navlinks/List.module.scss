@@ -1,0 +1,16 @@
+.list {
+    font-weight: 500;
+    font-size: 15px;
+    padding-bottom: 15px;
+    
+    &:hover {
+      cursor: pointer;
+      border-bottom: 10px solid #111;
+    }
+    
+    &.active {
+      cursor: pointer;
+      border-bottom: 10px solid #111;
+    }
+  }
+  

@@ -1,0 +1,66 @@
+$white: #fff;
+$grey: #888888;
+$black: #111;
+$lightgrey: #999999;
+$lightwhite: #f7f7f7;
+
+button {
+	padding: 10px 25px;
+	outline: none;
+	border: none;
+	align-self: flex-start;
+	cursor: pointer;
+	background-color: $black;
+	color: $white;
+	border-bottom-right-radius: 6px;
+	font-size: 16px;
+	align-self: flex-end;
+}
+.addCart {
+	font-size: 13px;
+}
+.wishList {
+	background-color: $white;
+	color: $grey;
+	font-size: 12px;
+	font-weight: 600;
+
+}
+.cart {
+	background-color: $white;
+	color: $black;
+	padding: 3px 13px;
+	border: none;
+	font-size: 12px;
+	border-radius: 10px;
+}
+.cartWishListActive {
+	background-color: $lightwhite;
+	color: $black;
+	font-weight: 400;
+	border: none;
+	border-radius: 0px;
+	border-bottom: 2px solid #111;
+	padding: 0px;
+	padding-bottom: 4px;
+}
+.cartWishListInActive {
+	background-color: $lightwhite;
+	color: $lightgrey;
+	font-weight: 400;
+	border: none;
+	border-radius: 0px;
+	padding: 0px;
+	padding-bottom: 7px;
+}
+.wishListCard {
+	position: absolute;
+	bottom: -11px;
+	right: 19px;
+	padding: 9px 16px;
+	font-size: 10px;
+}
+.placeItem {
+	padding: 10px 15px;
+	font-size: 13px;
+}

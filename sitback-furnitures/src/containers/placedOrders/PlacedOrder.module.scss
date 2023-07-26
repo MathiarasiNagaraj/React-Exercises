@@ -1,0 +1,19 @@
+$lightwhite:#f7f7f7;
+.container{
+    background-color: $lightwhite;
+    padding: 100px 165px;
+    h1{
+        font-size: 20px;
+        font-weight: 500;
+    }
+    .description{
+        margin-top: 10px;
+        font-size: 16px;
+    }
+    .cardContainer{
+        display: flex;
+        margin-top: 20px;
+        flex-wrap: wrap;
+        gap:40px;
+    }
+}

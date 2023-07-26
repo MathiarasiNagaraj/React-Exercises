@@ -1,0 +1,28 @@
+$lightwhite:#f7f7f7;
+$white:#fff;
+.cart {
+
+  background-color: $lightwhite;
+
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  background-color: $white;
+  align-self: flex-end;
+  column-gap: 126px;
+  padding: 33px 40px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 12px;
+  p{
+    font-size: 18px;
+  }
+}
+.alterText{
+  width:330px;
+  padding: 40px  0px;
+}
