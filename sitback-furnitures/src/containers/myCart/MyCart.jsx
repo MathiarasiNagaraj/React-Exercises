@@ -6,6 +6,7 @@ import Cartcard from "../../components/cartcard/Cartcard";
 import { Link } from "react-router-dom";
 import { BiRupee } from "react-icons/bi";
 import { PLACEHOLDER } from "../../constants/components";
+import { formattedAmount } from "../../util";
 
 /**
  * A component for displaying the cart page with added items.
@@ -24,7 +25,7 @@ const MyCart = (props) => {
   }, [data]);
 
   
-  const formattedTotal = total.toLocaleString();
+
 
   // Calculate the total amount
   useEffect(() => {
@@ -64,7 +65,7 @@ const MyCart = (props) => {
               TOTAL AMOUNT
               <p>
                 <BiRupee />
-                {formattedTotal}
+                {formattedAmount(total)}
               </p>
             </div>
             <Link to="/order-confirm-page">

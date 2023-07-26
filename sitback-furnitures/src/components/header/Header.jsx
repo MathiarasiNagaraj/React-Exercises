@@ -11,7 +11,7 @@ import { AiFillCaretDown } from 'react-icons/ai';
  */
 const Header = () => {
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <Link to="/">
         <h1>{NAVIGATION.logo}</h1>
       </Link>
@@ -19,7 +19,7 @@ const Header = () => {
       <div className={styles.profile}>
         {NAVIGATION.profile}<div> <AiFillCaretDown /></div>
       </div>
-    </div>
+    </header>
   );
 };
 

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./Cartcard.module.scss";
 import { BiRupee } from "react-icons/bi";
 import Button from "../button/Button";
+import { formattedAmount } from "../../util";
 
 /**
  * A cart card component for displaying product details in a shopping cart.
@@ -21,7 +22,7 @@ const Cartcard = prop => {
  
   const {name,photo,quantity,price,id}=props
   const [counter, setCounter] = useState(quantity);
-  const formattedPrice =price.toLocaleString();
+
 //to change the quantity on UI whenever the +,- is clicked
   useEffect(() => {
     setCounter(quantity);
@@ -59,7 +60,7 @@ const Cartcard = prop => {
         <h1 className={styles.cartName}>{name}</h1>
         <p className={styles.cartPrice}>
           <BiRupee />
-          {formattedPrice}
+          {formattedAmount(price)}
         </p>
       </div>
 

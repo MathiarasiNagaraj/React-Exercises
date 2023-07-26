@@ -4,6 +4,7 @@ import styles from "./ProductCard.module.scss";
 import Button from "../button/Button";
 import { IoShieldCheckmark } from "react-icons/io5";
 import { BiRupee } from "react-icons/bi";
+import { formattedAmount } from "../../util";
 
 /**
  * A reusable component for displaying a product card.
@@ -23,7 +24,7 @@ import { BiRupee } from "react-icons/bi";
  */
 const ProductCard = ({ props, onClick }) => {
   const { name, photo, description, price, id, guarantee, quantity } = props;
-  const formattedPrice = price.toLocaleString();
+
 
   //on clicking add to wishList ,data should pass to MywishList through parent components and change the active state to wishList
   const onClickHandler = (e) => {
@@ -60,7 +61,7 @@ const ProductCard = ({ props, onClick }) => {
         {name}
         <span>
           <BiRupee />
-          {formattedPrice}
+          {formattedAmount(price)}
         </span>
       </h3>
       {!guarantee ? (
