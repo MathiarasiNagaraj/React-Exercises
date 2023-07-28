@@ -1,0 +1,12 @@
+$red:#d0011c;
+$white:#ffffff;
+button{
+    border: none;
+    outline: none;
+}
+.lottery-button{
+background-color: $red;
+color:$white;
+padding:10px 25px;
+font-size: 22px;
+}
