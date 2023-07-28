@@ -4,7 +4,7 @@ import styles from "./ProductCard.module.scss";
 import Button from "../button/Button";
 import { IoShieldCheckmark } from "react-icons/io5";
 import { BiRupee } from "react-icons/bi";
-import { formattedAmount } from "../../util";
+import { formattedAmount } from "../../utils/util";
 
 /**
  * A reusable component for displaying a product card.

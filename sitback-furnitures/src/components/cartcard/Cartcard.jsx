@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./Cartcard.module.scss";
 import { BiRupee } from "react-icons/bi";
 import Button from "../button/Button";
-import { formattedAmount } from "../../util";
+import { formattedAmount } from "../../utils/util";
 
 /**
  * A cart card component for displaying product details in a shopping cart.

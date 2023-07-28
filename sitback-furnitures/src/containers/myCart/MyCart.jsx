@@ -6,7 +6,7 @@ import Cartcard from "../../components/cartcard/Cartcard";
 import { Link } from "react-router-dom";
 import { BiRupee } from "react-icons/bi";
 import { PLACEHOLDER } from "../../constants/components";
-import { formattedAmount } from "../../util";
+import { formattedAmount } from "../../utils/util";
 
 /**
  * A component for displaying the cart page with added items.
