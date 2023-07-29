@@ -1,7 +1,29 @@
-$black:#151515;
-$white:#ffffff;
-.all-movie{
-    background-color: $black;
-    color:$white;
-padding: 100px 80px 140px;
+$black: #111111;
+$white: #ffffff;
+.all-movie {
+  display: flex;
+  justify-content: space-between;
+  background-color: $black;
+  color: $white;
+  padding: 100px 80px 140px;
+}
+.movies{
+    width: 50%;
+}
+.movie-container {
+
+  height: 70vh;
+  justify-content: space-between;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.movie-description {
+  color: $white;
+  width: 40%;
+  img{
+    height: 200px;
+    width: 300px;
+  }
 }
