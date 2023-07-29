@@ -7,7 +7,7 @@ export const POSTER = {
     alt:'sindel-poster '
 }
 export const LOTTERY = {
-    description:'Your Number can win you exciting prizes',
+    description:'Your Mobile Number can win you exciting prizes',
     placeHolder: 'Enter Mobile Number',
     button: "I'm Feeling Lucky",
     
@@ -15,11 +15,12 @@ export const LOTTERY = {
 
 export const TRAILER = {
     title: "Trailers",
-    description: 'you need to signin to view trailers',
+    description: 'You need to sign in to view Trailers. ',
     movieTitle: "Sintel",
     movieDescription:"Sintel tells the story of a friendship between a girl named Sintel, a baby dragon and the desperate lengths she will go to when that friendship is taken from her. Sintel is created by Blender in 2010 as a pet project to demonstrate Blender capabilities.",
     moviePoster:'/assets/sindel-background.png',
-    button:"WATCH NOW"
+    button: "WATCH NOW",
+    link:"Sign in Now"
 }
 export const SHORT_TEASER = {
     title:"Short Teasers"

@@ -1,7 +1,13 @@
+$light-grey:#d6d6d6;
 .lottery-input{
-    width: 370px;
-   padding: 21px 20px;
+    width: 400px;
+   padding: 21px 25px;
    font-weight: 500;
-   font-size: 12px;
+   font-size: 15px;
    border: none; 
+outline: none;
+
+   ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color:$light-grey;
+  }
 }

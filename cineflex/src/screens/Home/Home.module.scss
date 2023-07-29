@@ -1,28 +1,99 @@
 $black: #000000;
 $white: #ffffff;
+$blue:#6a97cc;
 .poster {
-    max-height:900px;
+  max-height: 900px;
 
-    overflow: hidden;
+  overflow: hidden;
   img {
-   object-fit: cover;
+    object-fit: cover;
   }
 }
-.lottery{
-    background: rgb(210,179,41);
-background: linear-gradient(90deg, rgba(210,179,41,1) 0%, rgba(187,146,27,1) 100%);
-color:$white;
-padding: 40px;
-font-size: 22px;
-font-weight: 500;
+.lottery {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  background: rgb(210, 179, 41);
+  background: linear-gradient(
+    90deg,
+    rgba(210, 179, 41, 1) 0%,
+    rgba(187, 146, 27, 1) 100%
+  );
+  color: $white;
+  padding: 33px;
+  padding-left: 200px;
+  font-size: 31px;
+  font-weight: 900;
 }
 
 .container {
+  background-color: $black;
+
   display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 100px 155px;
+  color: $white;
+  h1 {
+    font-size: 42px;
+    font-weight: 400;
+  }
   .trailer {
+    p {
+      font-weight: 500;
+      font-size: 22px;
+      margin-top: 5px;
+      margin-bottom: 25px;
+      a{
+        color:$blue;
+      cursor: pointer;
+      }
+    }
+
     .movie {
+      display: flex;
+
+      gap: 46px;
+      p {
+        text-align: justify;
+        font-size: 26px;
+        margin-top: 25px;
+        margin-bottom: 30px;
+        font-weight: 500;
+        padding-right: 50px;
+      }
+
       img {
-        width: 100%;
+        max-height: 311px;
+        width: 460px;
+        object-fit: cover;
+      }
+    }
+  }
+  .short-teaser {
+    margin-top: 75px;
+    h1{
+      margin-bottom: 30px;
+    }
+    div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+    }
+  }
+  .language-container {
+    margin-top: 67px;
+    p {
+      font-weight: 700;
+      font-size: 21px;
+    }
+    div {
+      display: flex;
+      padding-top: 10px;
+
+      span {
+        margin: 5px;
       }
     }
   }
