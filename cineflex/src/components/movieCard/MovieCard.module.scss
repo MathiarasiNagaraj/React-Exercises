@@ -1,7 +1,7 @@
 .movie-card {
   img {
     height: 280px;
-    width: 226px;
+    width: 220px;
     object-fit: cover;
   }
   h1 {
@@ -10,7 +10,7 @@
   }
   .movie-details {
     display: flex;
-    margin-top: 10px;
+    margin-top: 5px;
     align-items: center;
     justify-content: space-between;
     .icon {

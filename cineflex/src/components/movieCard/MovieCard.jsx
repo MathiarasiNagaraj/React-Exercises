@@ -11,7 +11,7 @@ const MovieCard = props => {
           <img src={link} onClick={()=> onClick(data)} />
           <div className={styles["movie-details"]}>
           <div>
-          <h1>{movie}</h1>
+          <h2>{movie}</h2>
           <p>{like} Likes</p>
           </div>
  <div className={styles["icon"]} onClick={()=>setLikes((prevLike)=>prevLike+1)}>

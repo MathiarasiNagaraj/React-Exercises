@@ -5,6 +5,7 @@ import { getMovies } from "../../services/MovieService";
 import MovieCard from "../../components/movieCard/MovieCard";
 import Button from "../../components/button/Button";
 import { ALL_MOVIES } from "../../constants/AllMovie";
+import {AiFillLike} from "react-icons/ai"
 const AllMovie = (props) => {
   const [movies, setMovies] = useState([]);
   const [movieDescription, setMovieDescription] = useState({});
@@ -43,12 +44,17 @@ const AllMovie = (props) => {
         <Button value={ALL_MOVIES.button} styleName="loadMore-button" />
       </div>
       <div className={styles["movie-description"]}>
-        <h1>{movieDescription?.movie}</h1>
+        <div className={styles["movie-name"]}>
+          <h1>{movieDescription?.movie}</h1>
+          <div className={styles["like"]}>
+          <AiFillLike />
+          </div>
+          </div>
         <h4>{movieDescription?.likes} Likes</h4>
         <img src={ movieDescription?.link} />
-        <p>{movieDescription?.description}</p>
+        <p className={styles["movie-about"]}>{movieDescription?.description}</p>
 
-        <h1>Actors</h1>
+        <h2 >ACTORS</h2>
         {movieDescription?.actors?.map(item => <p>{item}</p>)}
       </div>
 </div>
