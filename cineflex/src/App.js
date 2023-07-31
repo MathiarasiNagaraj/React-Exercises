@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Protected } from "./auth/Protected";
 import Header from "./containers/header/Header";
 import AllMovie from "./screens/AllMovies/AllMovie";
 import Home from "./screens/Home/Home";
