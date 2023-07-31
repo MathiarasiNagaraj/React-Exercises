@@ -10,7 +10,8 @@ const InputBox = forwardRef((props, ref) => {
 });
 
 InputBox.propTypes = {
-    placeholder:PropTypes.string
+  placeholder: PropTypes.string,
+  styleName:PropTypes.string
 }
 
 export default InputBox

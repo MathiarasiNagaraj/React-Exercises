@@ -2,13 +2,11 @@ import React from 'react'
 import { useAuthContext } from '../../auth/AuthContext'
 import { NAV_LINKS } from '../../constants/Navbar'
 import Navlink from '../navlink/Navlink'
-
+import styles from './Navbar.module.scss'
 const Navbar = () => {
-    const { user } = useAuthContext();
-    console.log("user",user.userEmail)
-    const nav = NAV_LINKS.map(item => <Navlink data={ item} />)
+    const nav = NAV_LINKS.map(item => <Navlink data={item} key={ item} />)
   return (
-      <nav>
+      <nav className={styles["navbar"]}>
   {nav}
    </nav> 
   )

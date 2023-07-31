@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import styles from "./AllMovie.module.scss";
 import { getMovies } from "../../services/MovieService";
 import MovieCard from "../../components/movieCard/MovieCard";
 import Button from "../../components/button/Button";
 import { ALL_MOVIES } from "../../constants/AllMovie";
 import {AiFillLike} from "react-icons/ai"
-const AllMovie = (props) => {
+const AllMovie = () => {
   const [movies, setMovies] = useState([]);
   const [movieDescription, setMovieDescription] = useState({});
 
@@ -61,6 +60,6 @@ const AllMovie = (props) => {
   );
 };
 
-AllMovie.propTypes = {};
+
 
 export default AllMovie;

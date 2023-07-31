@@ -1,9 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styles from './NowShowing.module.scss'
 import { NOW_SHOWING } from '../../constants/NowShowing'
 
-const NowShowing = props => {
+const NowShowing =() => {
   return (
       <div className={styles["now-showing"]}>
           <h4>{ NOW_SHOWING.pageTitle}</h4>
@@ -14,6 +13,6 @@ const NowShowing = props => {
   )
 }
 
-NowShowing.propTypes = {}
+
 
 export default NowShowing
