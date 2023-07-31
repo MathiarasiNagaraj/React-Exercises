@@ -10,8 +10,11 @@ export const LOTTERY = {
     description:'Your Mobile Number can win you exciting prizes',
     placeHolder: 'Enter Mobile Number',
     button: "I'm Feeling Lucky",
+    success: 'Hurray! You win a Free ticket to Blind Date on Wednesday',
+    error:'Sorry :( Better Luck Next Time'
     
 }
+
 
 export const TRAILER = {
     title: "Trailers",

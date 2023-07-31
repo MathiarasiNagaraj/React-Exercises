@@ -1,6 +1,14 @@
 $black: #151515;
 $white: #ffffff;
 $yellow:#f5a522;
+.loader{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: $black;
+    color:$white;
+    align-items: center;
+}
 .all-movie {
   display: flex;
   justify-content: space-between;

@@ -4,15 +4,17 @@ import { getMovies } from "../../services/MovieService";
 import MovieCard from "../../components/movieCard/MovieCard";
 import Button from "../../components/button/Button";
 import { ALL_MOVIES } from "../../constants/AllMovie";
-import {AiFillLike} from "react-icons/ai"
+import { AiFillLike } from "react-icons/ai"
+import {Bars} from "react-loader-spinner"
 const AllMovie = () => {
   const [movies, setMovies] = useState([]);
   const [movieDescription, setMovieDescription] = useState({});
-
+  const [like, setLike] = useState();
   useEffect(() => {
     const fetchData = () => {
       getMovies()
         .then((data) => {
+          console.log(data,"data in all movie")
           setMovies(data)
         setMovieDescription(data[0])}
         )
@@ -22,9 +24,12 @@ const AllMovie = () => {
   }, []);
   const onMoviePosterClickHandler = (data) => {
     setMovieDescription(data);
-    console.log(movieDescription);
+   setLike(data.like)
   };
-  const onIncreaseLikeHandler = () => {};
+  
+  const onIncreaseLikeHandler = (like) => {
+    setLike(like)
+  };
   const movie =
     movies &&
     movies?.map((item) => (
@@ -35,28 +40,40 @@ const AllMovie = () => {
       />
     ));
   return (
-
+    <>{!movies ?
+     
+      <div className={styles["loader"]}>
+      <Bars
+      height="80"
+      width="80"
+      color="#4fa94d"
+      ariaLabel="bars-loading"
+      wrapperStyle={{}}
+      wrapperClass=""
+      visible={true}
+    /> </div>:
       <div className={styles["all-movie"]}>
-      <div className={styles["movies"]}>
-        <h1>{ALL_MOVIES.title}</h1>
-        <div className={styles["movie-container"]}>{movie}</div>
-        <Button value={ALL_MOVIES.button} styleName="loadMore-button" />
-      </div>
-      <div className={styles["movie-description"]}>
-        <div className={styles["movie-name"]}>
-          <h1>{movieDescription?.movie}</h1>
-          <div className={styles["like"]}>
-          <AiFillLike />
+        <div className={styles["movies"]}>
+          <h1>{ALL_MOVIES.title}</h1>
+          <div className={styles["movie-container"]}>{movie}</div>
+          <Button value={ALL_MOVIES.button} styleName="loadMore-button" />
+        </div>
+        <div className={styles["movie-description"]}>
+          <div className={styles["movie-name"]}>
+            <h1>{movieDescription?.movie}</h1>
+            <div className={styles["like"]}>
+              <AiFillLike />
+            </div>
           </div>
-          </div>
-        <h4>{movieDescription?.likes} Likes</h4>
-        <img src={ movieDescription?.link} />
-        <p className={styles["movie-about"]}>{movieDescription?.description}</p>
+          <h4>{like} Likes</h4>
+          <img src={movieDescription?.link} />
+          <p className={styles["movie-about"]}>{movieDescription?.description}</p>
 
-        <h2 >ACTORS</h2>
-        {movieDescription?.actors?.map(item => <p>{item}</p>)}
-      </div>
-</div>
+          <h2 >ACTORS</h2>
+          {movieDescription?.actors?.map(item => <p>{item}</p>)}
+        </div>
+      </div>}
+      </>
   );
 };
 

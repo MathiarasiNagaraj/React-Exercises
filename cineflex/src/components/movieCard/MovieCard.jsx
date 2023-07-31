@@ -3,10 +3,17 @@ import PropTypes from "prop-types";
 import styles from "./MovieCard.module.scss";
 import { AiFillLike } from "react-icons/ai";
 const MovieCard = (props) => {
-  const { data, onClick } = props;
+  const { data, onClick,onLikeIncrease } = props;
   const { link, movie, likes } = data;
-  const [like, setLikes] = useState(parseInt(likes, 10));
-  return (
+    const [like, setLikes] = useState(parseInt(likes, 10));
+    const onLikeIncreaseHandler = () => {
+        setLikes((prevLike) => (
+            prevLike + 1
+        ))
+        onLikeIncrease(like);
+    }
+    return (
+      
     <div className={styles["movie-card"]}>
       <img src={link} onClick={() => onClick(data)} />
       <div className={styles["movie-details"]}>
@@ -16,7 +23,7 @@ const MovieCard = (props) => {
         </div>
         <div
           className={styles["icon"]}
-          onClick={() => setLikes((prevLike) => prevLike + 1)}
+          onClick={onLikeIncreaseHandler}
         >
           <AiFillLike />
         </div>
@@ -33,5 +40,6 @@ MovieCard.propTypes = {
   }).isRequired,
   onClick: PropTypes.func.isRequired,
 };
+
 
 export default MovieCard;
