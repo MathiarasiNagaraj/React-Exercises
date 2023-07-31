@@ -5,7 +5,6 @@ import Button from "../button/Button";
 import { LOGIN } from "../../constants/Login";
 import { useAuthContext } from "../../auth/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { Protected } from "../../auth/Protected";
 import { users } from "../../services/data";
 const LoginForm = () => {
   const { setUser } = useAuthContext();
