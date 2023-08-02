@@ -1,0 +1,35 @@
+$black: #000000;
+$white: #ffffff;
+$blue:#6a97cc;
+.lottery {
+
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    justify-content: center;
+    background: rgb(210, 179, 41);
+    background: linear-gradient(
+      90deg,
+      rgba(210, 179, 41, 1) 0%,
+      rgba(187, 146, 27, 1) 100%
+    );
+    color: $white;
+    padding: 33px;
+   
+    font-size: 31px;
+    font-weight: 900;
+  
+    .lottery-form{
+      display: flex;
+      align-items: center;
+      gap: 25px;
+  
+    }
+    form{
+  display: flex;
+  gap:25px;
+  
+    }
+   
+  }
+  

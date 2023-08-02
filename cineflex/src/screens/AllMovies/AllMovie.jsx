@@ -1,32 +1,18 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./AllMovie.module.scss";
 import { getMovies } from "../../services/MovieService";
 import MovieCard from "../../components/movieCard/MovieCard";
 import Button from "../../components/button/Button";
-import { ALL_MOVIES } from "../../constants/AllMovie";
-import { AiFillLike } from "react-icons/ai";
 import { Bars } from "react-loader-spinner";
-import withAdvertisement from "../../hoc/WithAdvertisement";
-const AllMovie = (props) => {
-  const {
-    showAd,
-    showAdvertisementNotification,
-    showResumeNotification,
-    advertisementCountdown,
-    resumeCountdown,
-    onClickHandler,
-  } = props;
+import MovieDescription from "../../components/movieDescription/MovieDescription";
+import { ALL_MOVIES } from "../../constants/AllMovie";
 
-  const time = {
-    adv: 15,
-    res: 5,
-    start: false,
-  };
+const AllMovie = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [index, setIndex] = useState(6);
   const [showMore, setShowMore] = useState(true);
-  
+
   useEffect(() => {
     const fetchData = () => {
       getMovies()
@@ -36,7 +22,7 @@ const AllMovie = (props) => {
           });
           setMovies(newData);
           if (data.length > 0) {
-            setSelectedMovie(0);
+            setSelectedMovie(newData[0]);
           }
         })
         .catch((err) => console.log(err));
@@ -44,14 +30,15 @@ const AllMovie = (props) => {
 
     fetchData();
   }, []);
-  useEffect(() => {
-    onClickHandler(time);
-  }, [selectedMovie]);
 
   const onMoviePosterClickHandler = (data) => {
-    setSelectedMovie(data.id - 1);
+    const movieData = movies.find((item) => item.id === data.id);
+    setSelectedMovie(movieData);
   };
 
+  useEffect(() => {
+    onMoviePosterClickHandler(selectedMovie);
+  }, [movies]);
   const onIncreaseLikeHandler = (data) => {
     const updatedMovieLikes = movies.map((movie) => {
       if (movie.id === data.id) {
@@ -59,7 +46,6 @@ const AllMovie = (props) => {
       }
       return movie;
     });
-    console.log("clicked", updatedMovieLikes[data.id - 1]);
     setMovies(updatedMovieLikes);
   };
 
@@ -74,8 +60,6 @@ const AllMovie = (props) => {
     />
   ));
 
-
-
   const onLoadMoreHandler = () => {
     if (index + 6 < movies.length) setIndex((prevIndex) => prevIndex + 6);
     else {
@@ -85,7 +69,7 @@ const AllMovie = (props) => {
   };
   return (
     <>
-      {!movies ? (
+      {movies.length < 0 ? (
         <div className={styles["loader"]}>
           <Bars
             height="80"
@@ -110,57 +94,14 @@ const AllMovie = (props) => {
               />
             )}
           </div>
-
-          <div className={styles["movie-description"]}>
-            {!showAd && (
-              <>
-                <div className={styles["movie-name"]}>
-                  <h1>{movies[selectedMovie]?.movie}</h1>
-                  <div
-                    className={styles["like"]}
-                    onClick={() => {
-                      const data = {
-                        id: movies[selectedMovie].id,
-                        like: movies[selectedMovie].likes + 1,
-                      };
-                      onIncreaseLikeHandler(data);
-                    }}
-                  >
-                    <AiFillLike />
-                  </div>
-                </div>
-                <h4>{movies[selectedMovie]?.likes} Likes</h4>
-                <img src={movies[selectedMovie]?.link} />
-                <p className={styles["movie-about"]}>
-                  {movies[selectedMovie]?.description}
-                </p>
-
-                <h2>ACTORS</h2>
-                {movies[selectedMovie]?.actors?.map((item) => (
-                  <p>{item}</p>
-                ))}
-              </>
-            )}
-
-            {showAd && (
-              <img
-                src="/assets/advertisements/large-promos/adv1.png"
-                className={styles["ad-img"]}
-              />
-            )}
-            <div className={styles["notification"]}>
-              {showAdvertisementNotification && (
-                <p>Advertisement in {advertisementCountdown} secs</p>
-              )}
-              {showResumeNotification && (
-                <p>Resume in {resumeCountdown} secs</p>
-              )}
-            </div>
-          </div>
+          <MovieDescription
+            data={selectedMovie}
+            onLikeIncrease={onIncreaseLikeHandler}
+          />
         </div>
       )}
     </>
   );
 };
 
-export default withAdvertisement(AllMovie);
+export default AllMovie;

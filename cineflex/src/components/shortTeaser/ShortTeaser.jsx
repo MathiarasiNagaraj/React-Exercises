@@ -2,16 +2,13 @@ import React, { useRef, useState, useEffect, useReducer } from "react";
 import PropTypes from "prop-types";
 import styles from "./ShortTeaser.module.scss";
 import withAdvertisement from "../../hoc/WithAdvertisement";
+import { ADVERTISEMENT_IMAGE } from "../../constants/Home";
 const ShortTeaser = props => {
-  console.log(props)
-  const { data ,showAd,showAdvertisementNotification,showResumeNotification,advertisementCountdown,    resumeCountdown,onClickHandler} = props;
+
+  const { data ,showAd,showAdNotification,advertisementCounter,resumeCounter,onClickHandler} = props;
 
   const videoRef = useRef();
-  const time = {
-    adv: 5,
-    res: 2,
-    start:false
- }
+
   return (
     <div className={styles["short-teaser-card"]}>
       <div className={styles["video"]}>
@@ -20,25 +17,25 @@ const ShortTeaser = props => {
             src={data.videoSrc}
             ref={videoRef}
             controls={true}
-            webkit-playsinline={true}
-            playsinline={true}
+            webkit-playsInline={true}
+            playsInline={true}
             disablePictureInPicture
-            controlslist="nodownload noplaybackrate"
-            onClick={()=>onClickHandler(time)}
+            controlsList="nodownload noplaybackrate"
+            onClick={onClickHandler}
           />
         )}
         {showAd && (
-          <img src="/assets/advertisements/small-promos/Advertisement-Small-1.png" />
+          <img src={ADVERTISEMENT_IMAGE.url} />
         )}
       </div>
 
       <h1>{data.title}</h1>
       <div className={styles["notification"]}>
-        {showAdvertisementNotification && (
-          <p>Advertisement in {advertisementCountdown} secs</p>
+        {showAdNotification && (
+          <p>Advertisement in {advertisementCounter} secs</p>
         )}
-        {showResumeNotification && (
-          <p>Video will resume in {resumeCountdown} secs</p>
+        {showAd && (
+          <p>Video will resume in {resumeCounter} secs</p>
         )}
       </div>
     </div>
@@ -47,4 +44,4 @@ const ShortTeaser = props => {
 
 ShortTeaser.propTypes = {};
 
-export default withAdvertisement(ShortTeaser);
+export default withAdvertisement(ShortTeaser,5,2,false);

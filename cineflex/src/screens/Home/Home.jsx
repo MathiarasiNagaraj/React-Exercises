@@ -14,10 +14,13 @@ import { getShortTeasers } from "../../services/MovieService";
 import ShortTeaser from "../../components/shortTeaser/ShortTeaser";
 import { useAuthContext } from "../../auth/AuthContext";
 import { Link } from "react-router-dom";
+import ErrorBoundary from "../../error/ErrorBoundary";
+import Lottery from "../../components/lottery/Lottery";
 const Home = () => {
     const [teasers, setTeasers] = useState([]);
-    const [number, setNumber] = useState(null);
-  const phoneNumberRef = useRef();
+
+  
+  
   const icons = LANGUAGE_ICONS.icons.map((item) => (
     <Icon icon={item.symbol} key={item.language} />
   ));
@@ -38,37 +41,24 @@ const Home = () => {
     teasers &&
     teasers?.map((item) => <ShortTeaser key={item.id} data={item} />);
 
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    const number = parseInt(phoneNumberRef.current.value);
-      if (number % 2 === 0) {
-        setNumber("even")
-      } else {
-          setNumber("odd")
-    }
-  };
+
+
+  const MyFallbackComponent = () => {
+    return   <div className={styles["lottery"]}><p>{LOTTERY.error}</p></div>
+  
+    
+ 
+ }
+  
   return (
     <div>
       <div className={styles["poster"]}>
         <img src={POSTER.url} alt={POSTER.alt} />
           </div>
           
-          <div className={styles["lottery"]}>
-              {number ? <p>{(number === 'even' ? LOTTERY.success : LOTTERY.error)}</p> :
-                  <div className={styles["lottery-form"]}>
-                      <span>{LOTTERY.description}</span>
-                      <div >
-                          <form onSubmit={onSubmitHandler}>
-                              <InputBox
-                                  placeholder={LOTTERY.placeHolder}
-                                  styleName={"lottery-input"}
-                                  ref={phoneNumberRef}
-                              />
-                              <Button value={LOTTERY.button} styleName={"lottery-button"} />
-                          </form>
-                      </div>
-                  </div>}
-      </div>
+      <ErrorBoundary FallbackComponent={<MyFallbackComponent/>}>
+          <Lottery />
+      </ErrorBoundary>
       <div className={styles["container"]}>
         <div className={styles["trailer"]}>
           <h1>{TRAILER.title}</h1>

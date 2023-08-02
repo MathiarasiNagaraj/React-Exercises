@@ -14,7 +14,7 @@ const Header = () => {
           </div>
       <Navbar />
       <div className={styles["user"]}>
-   {!user.userEmail?<NavLink to="/login">LOGIN</NavLink >:<>Hi {user.userEmail} | <NavLink to="/login">LOGOUT </NavLink></>}
+   {!user.userEmail?<NavLink to="/login">LOGIN</NavLink >:<>Hi {user.userEmail} | <NavLink to="/">LOGOUT </NavLink></>}
 
       </div>
     </div>

@@ -53,3 +53,7 @@ export const LANGUAGE_ICONS = {
         },
     ]
 }
+
+export const ADVERTISEMENT_IMAGE = {
+    url: `/assets/advertisements/small-promos/Advertisement-Small-${(Math.floor(Math.random() * 2) + 1)}.png`,
+}
