@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef } from "react";
+import React, { useState,useEffect } from "react";
 import Button from "../../components/button/Button";
 import InputBox from "../../components/inputbox/InputBox";
 import {
@@ -16,16 +16,23 @@ import { useAuthContext } from "../../auth/AuthContext";
 import { Link } from "react-router-dom";
 import ErrorBoundary from "../../error/ErrorBoundary";
 import Lottery from "../../components/lottery/Lottery";
-const Home = () => {
-    const [teasers, setTeasers] = useState([]);
 
-  
-  
+/**
+ * A component that displays Home page content.
+ * @returns {JSX.Element} Home component.
+ */
+
+
+const Home = () => {
+  const [teasers, setTeasers] = useState([]);
   const icons = LANGUAGE_ICONS.icons.map((item) => (
     <Icon icon={item.symbol} key={item.language} />
   ));
   const { user } = useAuthContext();
-  useMemo(() => {
+
+
+//fetching short teaser when component loaded
+  useEffect(() => {
     const fetchTeasers = () => {
       getShortTeasers()
         .then((data) => {
@@ -41,23 +48,24 @@ const Home = () => {
     teasers &&
     teasers?.map((item) => <ShortTeaser key={item.id} data={item} />);
 
-
-
+  
+  //fallback ui
   const MyFallbackComponent = () => {
-    return   <div className={styles["lottery"]}><p>{LOTTERY.error}</p></div>
-  
-    
- 
- }
-  
+    return (
+      <div className={styles["lottery"]}>
+        <p>{LOTTERY.error}</p>
+      </div>
+    );
+  };
+
   return (
     <div>
       <div className={styles["poster"]}>
         <img src={POSTER.url} alt={POSTER.alt} />
-          </div>
-          
-      <ErrorBoundary FallbackComponent={<MyFallbackComponent/>}>
-          <Lottery />
+      </div>
+
+      <ErrorBoundary FallbackComponent={<MyFallbackComponent />}>
+        <Lottery />
       </ErrorBoundary>
       <div className={styles["container"]}>
         <div className={styles["trailer"]}>

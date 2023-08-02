@@ -2,6 +2,13 @@ import React from 'react'
 import styles from './NowShowing.module.scss'
 import { NOW_SHOWING } from '../../constants/NowShowing'
 
+
+/**
+ * A component that displays a Now showing page
+ * @returns {JSX.Element} NowShowing component.
+ */
+
+
 const NowShowing =() => {
   return (
       <div className={styles["now-showing"]}>
