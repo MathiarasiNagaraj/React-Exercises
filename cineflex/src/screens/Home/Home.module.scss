@@ -2,17 +2,22 @@ $black: #000000;
 $white: #ffffff;
 $blue:#6a97cc;
 .poster {
-  max-height: 900px;
 
-  overflow: hidden;
-  img {
-    object-fit: cover;
+height: 90vh;
+  img{
+object-fit: cover;
+height: 100%;
+width: 100%;
+
+
   }
 }
 .lottery {
+
   display: flex;
   align-items: center;
   gap: 25px;
+  justify-content: center;
   background: rgb(210, 179, 41);
   background: linear-gradient(
     90deg,
@@ -21,9 +26,22 @@ $blue:#6a97cc;
   );
   color: $white;
   padding: 33px;
-  padding-left: 200px;
+ 
   font-size: 31px;
   font-weight: 900;
+
+  .lottery-form{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+  }
+  form{
+display: flex;
+gap:25px;
+
+  }
+ 
 }
 
 .container {

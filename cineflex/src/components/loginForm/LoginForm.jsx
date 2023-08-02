@@ -32,7 +32,7 @@ const LoginForm = () => {
         userPassword: passwordValue,
       }));
       formRef.current.reset();
-      navigate("/");
+      navigate("/",{replace:true});
     }
   };
 

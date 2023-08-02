@@ -41,7 +41,7 @@ const Home = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     const number = parseInt(phoneNumberRef.current.value);
-      if (number % 2 == 0) {
+      if (number % 2 === 0) {
         setNumber("even")
       } else {
           setNumber("odd")
@@ -54,10 +54,10 @@ const Home = () => {
           </div>
           
           <div className={styles["lottery"]}>
-              {number ? (number == 'even' ? LOTTERY.success : LOTTERY.error) :
-                  <div>
+              {number ? <p>{(number === 'even' ? LOTTERY.success : LOTTERY.error)}</p> :
+                  <div className={styles["lottery-form"]}>
                       <span>{LOTTERY.description}</span>
-                      <div>
+                      <div >
                           <form onSubmit={onSubmitHandler}>
                               <InputBox
                                   placeholder={LOTTERY.placeHolder}

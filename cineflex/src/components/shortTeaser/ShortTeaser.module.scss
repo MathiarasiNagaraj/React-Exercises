@@ -1,3 +1,4 @@
+$textBlue:#488ddf;
 .short-teaser-card{
 
    
@@ -13,5 +14,18 @@ flex-direction: column;
     height: 310px;
     width: 455px;
     }
- }   
+    img{
+        height: 310px;
+        width: 455px;
+        object-fit: cover;
+    }
+    video::-webkit-media-controls-fullscreen-button { display: none; }
+ }
+ .notification{
+    height: 10px;
+color:#488ddf;
+font-weight: 500;
+font-size: 23px;
+ }
+ 
 }
