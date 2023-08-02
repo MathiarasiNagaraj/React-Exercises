@@ -6,6 +6,12 @@ import { LOGIN } from "../../constants/Login";
 import { useAuthContext } from "../../auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { users } from "../../services/data";
+
+/**
+ * A login form component.
+ * @returns {JSX.Element} LoginForm component.
+ */
+
 const LoginForm = () => {
   const { setUser } = useAuthContext();
   const navigate = useNavigate();
@@ -18,6 +24,7 @@ const LoginForm = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const formRef = useRef(null);
+  //form handling 
   const handleSubmit = (e) => {
     e.preventDefault();
     const emailValue = emailRef.current.value;
@@ -26,6 +33,7 @@ const LoginForm = () => {
       (user) =>
         user.userEmail == emailValue && user.userPassword == passwordValue
     );
+    //if the user found set that to user in context and navigate to home
     if (foundUser) {
       setUser(() => ({
         userEmail: emailValue,

@@ -7,20 +7,28 @@ import { Bars } from "react-loader-spinner";
 import MovieDescription from "../../components/movieDescription/MovieDescription";
 import { ALL_MOVIES } from "../../constants/AllMovie";
 
+/**
+ * A component that displays a list of all available movies and movie Description.
+ * @returns {JSX.Element} AllMovie component.
+ */
+
 const AllMovie = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [index, setIndex] = useState(6);
   const [showMore, setShowMore] = useState(true);
 
+  //fetching data when the page loaded
   useEffect(() => {
     const fetchData = () => {
       getMovies()
         .then((data) => {
+          //changing the data type of likes in data
           const newData = data.map((data) => {
             return { ...data, likes: parseInt(data.likes, 10) };
           });
           setMovies(newData);
+          //setting the first movie in array for moviedescription
           if (data.length > 0) {
             setSelectedMovie(newData[0]);
           }
@@ -31,14 +39,18 @@ const AllMovie = () => {
     fetchData();
   }, []);
 
+  //onclicking the movie card the data should change
   const onMoviePosterClickHandler = (data) => {
     const movieData = movies.find((item) => item.id === data.id);
     setSelectedMovie(movieData);
   };
 
+  //updating movie description when whole movies is updated
   useEffect(() => {
     onMoviePosterClickHandler(selectedMovie);
   }, [movies]);
+
+  //like increase handler ,update whole list with given like for given  movie like
   const onIncreaseLikeHandler = (data) => {
     const updatedMovieLikes = movies.map((movie) => {
       if (movie.id === data.id) {
@@ -60,6 +72,7 @@ const AllMovie = () => {
     />
   ));
 
+  //loadmore functionality
   const onLoadMoreHandler = () => {
     if (index + 6 < movies.length) setIndex((prevIndex) => prevIndex + 6);
     else {

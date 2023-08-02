@@ -1,10 +1,17 @@
 import React,{useState,useRef} from 'react'
-import PropTypes from 'prop-types'
 import styles from './Lottery.module.scss'
 import { LOTTERY } from '../../constants/Home'
 import Button from "../../components/button/Button";
 import InputBox from "../../components/inputbox/InputBox";
-const Lottery = props => {
+
+
+/**
+ * A simple lottery component that determines if a given number is odd or even.
+ * @returns {JSX.Element} Lottery component.
+ */
+
+
+const Lottery = () => {
     const [number, setNumber] = useState(null);
     const phoneNumberRef = useRef();
     const onSubmitHandler = (e) => {
@@ -41,6 +48,6 @@ const Lottery = props => {
   )
 }
 
-Lottery.propTypes = {}
+
 
 export default Lottery
