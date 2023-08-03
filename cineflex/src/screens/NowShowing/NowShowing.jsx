@@ -14,7 +14,7 @@ const NowShowing =() => {
       <div className={styles["now-showing"]}>
           <h4>{ NOW_SHOWING.pageTitle}</h4>
           <h1>{NOW_SHOWING.title}</h1>
-          <video src={NOW_SHOWING.url}></video>
+          <video src={NOW_SHOWING.url} controls="on"/>
           <p>{ NOW_SHOWING.description}</p>
       </div>
   )

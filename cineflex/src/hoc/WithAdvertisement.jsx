@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useRef} from "react";
 
 /**
  * A higher-order component (HOC) that adds advertisement functionality to a wrapped component.
@@ -9,64 +9,61 @@ import React, { useEffect, useState } from "react";
  * @returns {React.Component} HOC-enhanced component.
  */
 
-const withAdvertisement = (WrappedComponent, adv, resume, startAgain) => {
+const withAdvertisement = (WrappedComponent, advertisementCount, resumeCount, isStartAgain) => {
   const WithAdvertisement = (props) => {
-    const [started, setStarted] = useState(false);
-    const [showAdNotification, setshowAdNotification] = useState(false);
-    const [showAd, setShowAd] = useState(false);
-    const [advertisementCounter, setAdvertisementCounter] = useState(adv);
-    const [showResumeNotification, setshowResumeNotification] = useState(false);
-    const [resumeCounter, setResumeCounter] = useState(resume);
-
-    // Initialize counters when component mounts or 'adv' and 'resume' change
+    
+    //states for Ad,Ad_Notification,Ad_Counter,resumeCounter
+    const [showAd,setShowAd] = useState(false);
+    const [showAdNotification,setShowAdNotification] = useState(false);
+    const [advertisementCounter, setAdvertisementCounter] = useState(advertisementCount);
+    const [resumeCounter, setResumeCounter] = useState(resumeCount);
+    const advTimeOutRef = useRef(null);
+    const resTimeOutRef = useRef(null);
     useEffect(() => {
-      setAdvertisementCounter(adv);
-      setResumeCounter(resume);
-    }, [WrappedComponent, adv, resume]);
+      setAdvertisementCounter(advertisementCount);
+      setResumeCounter(resumeCount);
 
-    /**
-     * Handles the click event for starting advertisement and resume Notification
-     */
-    const onClickHandler = () => {
-      if (!started) {
-        setshowAdNotification(true);
-        setTimeout(() => {
-          setShowAd(true);
-          setshowAdNotification(false);
-          setshowResumeNotification(true);
-          setTimeout(() => {
-            setShowAd(false);
-            setshowResumeNotification(false);
-          }, resumeCounter * 1000);
-        }, advertisementCounter * 1000);
-        if (!startAgain) {
-          setStarted(true);
-        }
-      }
-    };
+
+      clearTimeout(advTimeOutRef.current);
+      clearTimeout(resTimeOutRef.current);
+   },[props.data])
+
     useEffect(() => {
-      let advertisementTimer, resumeTimer;
-      if (showAdNotification) {
-        advertisementTimer = setInterval(() => {
-          setAdvertisementCounter((prev) => prev - 1);
-        }, 1000);
-      }
-
-      if (showResumeNotification) {
-        resumeTimer = setInterval(() => {
-          setResumeCounter((prev) => prev - 1);
-        }, 1000);
-      }
-      // Reset counters when showAdNotification or showResumeNotification changes
-      setAdvertisementCounter(adv);
-      setResumeCounter(resume);
-      //clean up function that clear interavel
+      //setting interval for countdown for ad and notification 
+      let advInteravel, resInterval;
+      if (showAdNotification)
+      advInteravel=  setInterval(() => {
+          setAdvertisementCounter((prevCounter) => prevCounter - 1);
+        }, 1000)
+      if (showAd)
+      resInterval= setInterval(() => {
+          setResumeCounter((prevCounter) => prevCounter - 1);
+        }, 1000)
       return () => {
-        clearInterval(advertisementTimer);
-        clearInterval(resumeTimer);
-      };
-    }, [showResumeNotification, showAdNotification]);
+        clearInterval(advInteravel);
+        clearInterval(resInterval);
+      }
+      
+    },[showAd,showAdNotification])
 
+    //onclick function when poster or video clicked
+    const onClickHandler = () => {
+      //1. set the ad notification to true
+      setShowAdNotification(true);
+      //2.settime out for ad showing
+      let adTimeOutId = setTimeout(() => {
+        //3.after ad notification timer completes hide the ad notification and show the ad
+        setShowAdNotification(false);
+        setShowAd(true);
+        //4. ad should display for {resumeCounter} seconds and after hide the ad
+  let resTimeOut=setTimeout(() => {
+          setShowAd(false);
+  }, resumeCounter * 1000)
+  resTimeOutRef.current=resTimeOut
+   }, advertisementCounter * 1000)
+      
+advTimeOutRef.current=adTimeOutId
+    }
     return (
       <WrappedComponent
         {...props}
@@ -74,7 +71,6 @@ const withAdvertisement = (WrappedComponent, adv, resume, startAgain) => {
         showAd={showAd}
         advertisementCounter={advertisementCounter}
         resumeCounter={resumeCounter}
-        showResumeNotification={showResumeNotification}
         onClickHandler={onClickHandler}
       />
     );

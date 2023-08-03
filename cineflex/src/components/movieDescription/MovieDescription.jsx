@@ -31,7 +31,6 @@ const MovieDescription = (props) => {
     resumeCounter,
     onClickHandler,
     onLikeIncrease,
-    showResumeNotification
   } = props;
     useEffect(() => {
         onClickHandler()
@@ -73,7 +72,7 @@ const MovieDescription = (props) => {
         {showAdNotification && (
           <p>Advertisement in {advertisementCounter} secs</p>
         )}
-        {showResumeNotification && <p>Resume in {resumeCounter} secs</p>}
+        {showAd&& !showAdNotification && <p>Resume in {resumeCounter} secs</p>}
       </div>
     </div>
   );
@@ -95,4 +94,4 @@ MovieDescription.propTypes = {
   showResumeNotification: PropTypes.bool.isRequired
 };
 
-export default withAdvertisement(MovieDescription,6,2,true);
+export default withAdvertisement(MovieDescription,15,5,true);
