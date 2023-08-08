@@ -10,7 +10,7 @@ import styles from "./Navbar.module.scss";
  */
 
 const Navbar = () => {
-  const nav = NAV_LINKS.map((item) => <Navlink data={item} key={item} />);
+  const nav = NAV_LINKS.map((item) => <Navlink data={item} key={item.name} />);
   return <nav className={styles["navbar"]}>{nav}</nav>;
 };
 

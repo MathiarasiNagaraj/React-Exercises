@@ -50,7 +50,7 @@ MovieCard.propTypes = {
   data: PropTypes.shape({
     id:PropTypes.string.isRequired,
     movie: PropTypes.string.isRequired,
-    like: PropTypes.string.isRequired,
+    likes: PropTypes.number.isRequired,
     link: PropTypes.string.isRequired,
   }).isRequired,
   onClick: PropTypes.func.isRequired,

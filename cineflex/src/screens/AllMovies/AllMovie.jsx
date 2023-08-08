@@ -27,6 +27,7 @@ const AllMovie = () => {
           const newData = data.map((data) => {
             return { ...data, likes: parseInt(data.likes, 10) };
           });
+          
           setLoading(false);
           setMovies(newData);
 
@@ -67,7 +68,7 @@ const AllMovie = () => {
 
   let allMovies = movies.slice(0, index).map((item) => (
     <MovieCard
-      key={item.id} // Don't forget to add a unique key
+      key={item.id} 
       data={item}
       onClick={onMoviePosterClickHandler}
       onLikeIncrease={onIncreaseLikeHandler}

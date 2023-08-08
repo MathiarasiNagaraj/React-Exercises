@@ -46,7 +46,7 @@ const Home = () => {
   }, []);
   const teaser =
     teasers &&
-    teasers?.map((item) => <ShortTeaser key={item.id} data={item} />);
+    teasers?.map((item) => <ShortTeaser key={teasers.indexOf(item)} data={item} />);
 
   
   //fallback ui
