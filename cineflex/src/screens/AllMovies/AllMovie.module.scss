@@ -16,13 +16,17 @@ $yellow:#f5a522;
   color: $white;
   padding: 60px 80px 140px;
 }
-.movies{
-    width: 47%;
-    h1{
-        font-size: 42px;
+.movies {
+  width: 47%;
+
+  h1 {
+    font-size: 42px;
     font-weight: 400;
-    }
+  }
+
+ 
 }
+
 .movie-container {
 
 margin-top: 40px;
@@ -34,4 +38,9 @@ margin-bottom: 50px;
   flex-wrap: wrap;
   gap: 30px;
   row-gap: 39px;
+
+  &::-webkit-scrollbar {
+    display: none;
+   
+  }
 }
