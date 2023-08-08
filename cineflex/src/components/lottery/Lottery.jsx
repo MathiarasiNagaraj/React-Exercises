@@ -19,9 +19,8 @@ const Lottery = () => {
 
     const number = phoneNumberRef.current.value;
     //checking any other non characters are there
+    //check the length of the phone number
     if (!containsNonNumberCharacters(number) && number.trim().length === 10) {
-      //check the length of the phone number
-
       let num = parseInt(number);
 
       if (num % 2 === 0) {
@@ -29,15 +28,15 @@ const Lottery = () => {
       } else {
         setNumber("odd");
       }
-    } 
+    }
   };
-
+  //method to throw error
   const callError = () => {
     throw new Error(LOTTERY.error);
   };
+  //to monitor input validation
   const onChangeHandler = () => {
-      setInput(phoneNumberRef?.current?.value);
-   
+    setInput(phoneNumberRef?.current?.value);
   };
   return (
     <div className={styles["lottery"]}>
@@ -57,7 +56,9 @@ const Lottery = () => {
               <Button
                 value={LOTTERY.button}
                 styleName={"lottery-button"}
-                disabled={input?.length!==10 || containsNonNumberCharacters(input)}
+                disabled={
+                  input?.length !== 10 || containsNonNumberCharacters(input)
+                }
               />
             </form>
           </div>

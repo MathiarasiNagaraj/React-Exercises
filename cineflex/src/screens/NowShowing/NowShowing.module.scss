@@ -8,6 +8,26 @@ background-color: $black;
 color:$white;
 padding:33px 250px 190px;
 
+.video-img {
+    position: relative;
+height: 670px;
+    .play-icon {
+      position: absolute;
+      top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+      img{
+        height: 50px;
+        width: 50px;
+      }
+    }
+  }
+video{
+
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
 h4{
     font-size: 25px;
 color:$blue

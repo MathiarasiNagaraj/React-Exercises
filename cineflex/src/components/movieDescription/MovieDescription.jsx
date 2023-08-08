@@ -36,32 +36,39 @@ const MovieDescription = (props) => {
     stopAd,
     onLikeIncrease,
   } = props;
-  
+
   const [advNotifTime, setadvNotifTime] = useState(0);
   const [adTime, setAdTime] = useState(0);
   const [Adinteravel, setAdinteravel] = useState();
   const [resumeinteravel, setresumeInteravel] = useState();
+
+  //when the movie description is changed
+  //1.interval has to be cleared
+  //2.ad notification time set to initial value
+  //3.showAdNotification hoc method need to be called with initial values 
+  //to start the timer freshly
   useEffect(() => {
     clearInterval(Adinteravel);
     clearInterval(resumeinteravel);
     setadvNotifTime(1);
-    showAdNotification(0, ADVERTISEMENT_NOTIFICATION.totalTime);  
-  },[props.data.id])
- 
+    showAdNotification(0, ADVERTISEMENT_NOTIFICATION.totalTime);
+  }, [props.data.id]);
+
+  //when adNotificationtime or adtime change
   useEffect(() => {
- 
     let Adinteravel, resumeInteravel;
-    //to set adnotification message
+//if the (current)adNotfication  is less than total AD-notification length increase the current time by 1 for every second
     if (advNotifTime < ADVERTISEMENT_NOTIFICATION.totalTime) {
-  
       Adinteravel = setInterval(() => {
-     
         showAdNotification(advNotifTime, ADVERTISEMENT_NOTIFICATION.totalTime);
- 
+
         setadvNotifTime((prev) => prev + 1);
       }, 1000);
       setAdinteravel(Adinteravel);
+
     }
+    //if the ad-notification is equal to total AD-notification length then show the ad for total ad length
+    //increase the adtime by 1 for every second until current adremaining time is less than total ad duration
     else if (adTime <= ADVERTISEMENT.totalTime) {
       resumeInteravel = setInterval(() => {
         showAd(adTime, ADVERTISEMENT.totalTime);
@@ -69,16 +76,21 @@ const MovieDescription = (props) => {
       }, 1000);
       setresumeInteravel(resumeInteravel);
     }
+      //if ad duration completed then stop the ad
     else {
       stopAd();
     }
-    
+//on returning clear the interval 
     return () => {
       clearInterval(Adinteravel);
-      clearInterval(resumeInteravel)
+      clearInterval(resumeInteravel);
     };
-  }, [adNotificationRemainingTime, adRemainingTime, advNotifTime,props.data["id"]]);
-
+  }, [
+    adNotificationRemainingTime,
+    adRemainingTime,
+    advNotifTime,
+    props.data["id"],
+  ]);
 
   return (
     <div className={styles["movie-description"]}>
@@ -105,7 +117,6 @@ const MovieDescription = (props) => {
 
           <h2>ACTORS</h2>
           {data?.actors?.map((item) => (
-          
             <p key={item}>{item}</p>
           ))}
         </>
@@ -145,7 +156,6 @@ MovieDescription.propTypes = {
   showAdNotification: PropTypes.func.isRequired,
   showAd: PropTypes.func.isRequired,
   onLikeIncrease: PropTypes.func.isRequired,
- 
 };
 
 export default withAdvertisement(MovieDescription);

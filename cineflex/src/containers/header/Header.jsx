@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './Header.module.scss'
 import { LOGO } from '../../constants/Home'
-import{Link, NavLink} from "react-router-dom"
+import{Link, NavLink,useLocation} from "react-router-dom"
 import Navbar from '../../components/navbar/Navbar'
 import { useAuthContext } from '../../auth/AuthContext'
 
@@ -11,7 +11,9 @@ import { useAuthContext } from '../../auth/AuthContext'
  */
 
 const Header = () => {
-  const { user,setUser } = useAuthContext();
+  const { user, setUser } = useAuthContext();
+  const location = useLocation();
+  //on logout clearing the user state and localstorage 
   const onLogoutHandler = () => {
     setUser(() => ({
       userEmail: "",
@@ -30,7 +32,8 @@ const Header = () => {
           </div>
       <Navbar />
       <div className={styles["user"]}>
-   {!user.userEmail?<NavLink to="/login">LOGIN</NavLink >:<>Hi {user.userName} | <NavLink to="/" onClick={onLogoutHandler}>LOGOUT </NavLink></>}
+      
+   {location.pathname!=='/login'&&(!user.userName?<NavLink to="/login">LOGIN</NavLink >:<>Hi {user.userName} | <NavLink to="/" onClick={onLogoutHandler}>LOGOUT </NavLink></>)}
 
       </div>
     </div>

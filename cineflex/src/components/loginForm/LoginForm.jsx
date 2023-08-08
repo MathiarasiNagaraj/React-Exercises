@@ -13,23 +13,18 @@ import { users } from "../../services/data";
  */
 
 const LoginForm = () => {
+  //accessing the setUser method from context to set the logged in user details
   const { setUser } = useAuthContext();
-  const navigate = useNavigate();
-  useEffect(() => {
-    setUser(() => ({
-      userEmail: "",
-      userPassword: "",
-      userName:""
-    }));
-  }, []);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const formRef = useRef(null);
-  //form handling 
+  const navigate = useNavigate();
+  //form handling -authentication
   const handleSubmit = (e) => {
     e.preventDefault();
     const emailValue = emailRef.current.value;
     const passwordValue = passwordRef.current.value;
+    //finding the user with given username and password
     const foundUser = users.find(
       (user) =>
         user.userEmail == emailValue && user.userPassword == passwordValue
@@ -41,9 +36,12 @@ const LoginForm = () => {
         userPassword: passwordValue,
         userName:foundUser.name
       }));
+      //set the islogged true and user name in localstorage
       localStorage.setItem("islogged", true);
       localStorage.setItem("userName", foundUser.name);
+      //after form submission reset the form values
       formRef.current.reset();
+      //navigate to the home page
       navigate("/",{replace:true});
     }
   };

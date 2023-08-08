@@ -11,7 +11,7 @@ $dark-yellow: #9a7713;
   padding: 120px 50px 60px;
   border-top: 4px solid #9a7713;
   background-color: $black;
-  opacity: 0.85;
+  opacity: 0.92;
 
     display: flex;
     flex-direction: column;
@@ -30,7 +30,8 @@ $dark-yellow: #9a7713;
   p {
     margin-top: 30px;
     color: $light-grey;
-    line-height: 1.5;
+    line-height:1.8;
+    font-size: 17px;
     margin-bottom: 40px;
   }
 }

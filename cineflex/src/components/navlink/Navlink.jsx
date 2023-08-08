@@ -21,6 +21,7 @@ const Navlink = (props) => {
   const { user } = useAuthContext();
   return (
     <>
+      {/* if the route is private show only if the user is logged  and current route is not "login" */}
       {(!isPrivate || (isPrivate && user.userEmail) )&& location.pathname!=='/login'? (
         <NavLink
           to={url}

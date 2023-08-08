@@ -65,7 +65,6 @@ const AllMovie = () => {
   };
 
   //to update movie whenever the movie data is updating
-
   let allMovies = movies.slice(0, index).map((item) => (
     <MovieCard
       key={item.id} 
@@ -75,7 +74,7 @@ const AllMovie = () => {
     />
   ));
 
-  //loadmore functionality
+  //loadmore functionality add movies by 6
   const onLoadMoreHandler = () => {
     if (index + 6 < movies.length) setIndex((prevIndex) => prevIndex + 6);
     else {

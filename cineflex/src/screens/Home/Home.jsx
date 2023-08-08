@@ -25,9 +25,6 @@ import Lottery from "../../components/lottery/Lottery";
 
 const Home = () => {
   const [teasers, setTeasers] = useState([]);
-  const icons = LANGUAGE_ICONS.icons.map((item) => (
-    <Icon icon={item.symbol} key={item.language} />
-  ));
   const { user } = useAuthContext();
 
 
@@ -44,12 +41,16 @@ const Home = () => {
     };
     fetchTeasers();
   }, []);
+  //mapping shortTeaser component with teaser data
   const teaser =
     teasers &&
     teasers?.map((item) => <ShortTeaser key={teasers.indexOf(item)} data={item} />);
-
+    //mapping Icon component with icon data
+    const icons = LANGUAGE_ICONS.icons.map((item) => (
+      <Icon icon={item.symbol} key={item.language} />
+    ));
   
-  //fallback ui
+  //fallback UI Component for Lottery component
   const MyFallbackComponent = () => {
     return (
       <div className={styles["lottery"]}>

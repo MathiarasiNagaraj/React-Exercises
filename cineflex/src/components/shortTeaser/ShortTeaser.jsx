@@ -38,33 +38,36 @@ const ShortTeaser = (props) => {
   const videoRef = useRef();
   const playRef = useRef();
   const [isStarted, setIsStarted] = useState(false);
-
+  const [adTime, setAdTime] = useState(0);
+  //on clicking toggle play and pause
   const onClickHandler = () => {
     playRef.current.style.display = "none";
     videoRef.current.paused
       ? videoRef.current.play()
       : videoRef.current.pause();
   };
+  //on play hide the play icon
   const onPlayHandler = () => {
     if (videoRef.current?.currentTime === 0) {
       setIsStarted(true);
     }
     playRef.current.style.display = "none";
   };
+  //on pause show the play icon
   const onPauseHandler = () => {
-  
     playRef.current.style.display = "block";
     videoRef.current.pause();
-   
   };
 
-  const [adTime, setAdTime] = useState(0);
+  //when adNotification time or adtime changes
   useEffect(() => {
     let Adinteravel, resumeInteravel;
+    //if the (current)adNotfication  is less than total AD-notification length increase the current time by 1 for every second
     if (
       Math.floor(Math.floor(videoRef.current?.currentTime)) <
       ADVERTISEMENT_NOTIFICATION.totalTime - 1
     ) {
+      //only on start of video start the counter (call the hoc method)
       if (isStarted) {
         Adinteravel = setInterval(() => {
           showAdNotification(
@@ -73,17 +76,24 @@ const ShortTeaser = (props) => {
           );
         }, 1000);
       }
-    } else if (adTime <= ADVERTISEMENT.totalTime) {
+    }
+    //if the ad-notification is equal to total AD-notification length then show the ad for total ad length
+    //increase the adtime by 1 for every second until current adremaining time is less than total ad duration
+    //hide the video
+    else if (adTime <= ADVERTISEMENT.totalTime) {
       resumeInteravel = setInterval(() => {
         showAd(adTime, ADVERTISEMENT.totalTime);
         setAdTime((prev) => prev + 1);
       }, 1000);
       videoRef.current.style.display = "none";
-    } else {
+    }
+    //if ad duration completed then stop the ad,show the video and play it
+    else {
       stopAd();
       videoRef.current.style.display = "block";
       videoRef?.current?.play();
     }
+    //on returning clear the interval
     return () => {
       clearInterval(Adinteravel);
       clearInterval(resumeInteravel);
@@ -103,13 +113,16 @@ const ShortTeaser = (props) => {
             ref={videoRef}
             onPlay={onPlayHandler}
             onPause={onPauseHandler}
-            poster={"/assets/sindel-background.png"}
+            poster={`/assets/${data.title.trim().toLowerCase()}.jpeg`}
           />
           {isshowAd && <img src={ADVERTISEMENT_IMAGE.url} />}
         </div>
       </div>
 
-      <h1>{data.title}</h1>
+      <h1>
+        {data.title}
+        {console.log(data.title.toLowerCase())}
+      </h1>
       <div className={styles["notification"]}>
         {isshowAdNotification && (
           <p>
@@ -131,7 +144,7 @@ const ShortTeaser = (props) => {
 ShortTeaser.propTypes = {
   data: PropTypes.shape({
     videoSrc: PropTypes.string.isRequired,
-    title:PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
   }).isRequired,
   isshowAd: PropTypes.bool.isRequired,
   isshowAdNotification: PropTypes.bool.isRequired,
