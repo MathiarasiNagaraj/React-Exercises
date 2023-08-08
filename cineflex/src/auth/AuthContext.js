@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (islogged) {
-      console.log(localStorage.getItem("userName") == "Nijin");
+    
       const name = localStorage.getItem("userName");
       const foundUser = users.find((user) => user.name == name);
       if (foundUser) {

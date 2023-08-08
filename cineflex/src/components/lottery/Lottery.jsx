@@ -37,8 +37,7 @@ const Lottery = () => {
   };
   const onChangeHandler = () => {
       setInput(phoneNumberRef?.current?.value);
-      console.log(input)
-     
+   
   };
   return (
     <div className={styles["lottery"]}>

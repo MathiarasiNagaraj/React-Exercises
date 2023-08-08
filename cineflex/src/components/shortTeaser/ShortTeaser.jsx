@@ -52,10 +52,10 @@ const ShortTeaser = (props) => {
     playRef.current.style.display = "none";
   };
   const onPauseHandler = () => {
-    console.log("pausing");
+  
     playRef.current.style.display = "block";
     videoRef.current.pause();
-    console.log("pause", Math.floor(videoRef.current?.currentTime));
+   
   };
 
   const [adTime, setAdTime] = useState(0);
@@ -130,18 +130,16 @@ const ShortTeaser = (props) => {
 
 ShortTeaser.propTypes = {
   data: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    movie: PropTypes.string.isRequired,
-    like: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
+    videoSrc: PropTypes.string.isRequired,
+    title:PropTypes.string.isRequired
   }).isRequired,
-  showAd: PropTypes.bool.isRequired,
-  showAdNotification: PropTypes.bool.isRequired,
-  advertisementCounter: PropTypes.number.isRequired,
-  resumeCounter: PropTypes.number.isRequired,
-  onClickHandler: PropTypes.func.isRequired,
-  onLikeIncrease: PropTypes.func.isRequired,
-  showResumeNotification: PropTypes.bool.isRequired,
+  isshowAd: PropTypes.bool.isRequired,
+  isshowAdNotification: PropTypes.bool.isRequired,
+  adNotificationRemainingTime: PropTypes.number.isRequired,
+  adRemainingTime: PropTypes.number.isRequired,
+  showAdNotification: PropTypes.func.isRequired,
+  showAd: PropTypes.func.isRequired,
+  stopAd: PropTypes.func.isRequired,
 };
 
 export default withAdvertisement(ShortTeaser, 5, 2, false);

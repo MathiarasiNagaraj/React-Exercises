@@ -55,7 +55,7 @@ const MovieDescription = (props) => {
     if (advNotifTime < ADVERTISEMENT_NOTIFICATION.totalTime) {
   
       Adinteravel = setInterval(() => {
-        console.log( advNotifTime);
+     
         showAdNotification(advNotifTime, ADVERTISEMENT_NOTIFICATION.totalTime);
  
         setadvNotifTime((prev) => prev + 1);
@@ -105,7 +105,8 @@ const MovieDescription = (props) => {
 
           <h2>ACTORS</h2>
           {data?.actors?.map((item) => (
-            <p>{item}</p>
+          
+            <p key={item}>{item}</p>
           ))}
         </>
       )}
@@ -134,16 +135,17 @@ MovieDescription.propTypes = {
   data: PropTypes.shape({
     id: PropTypes.string.isRequired,
     movie: PropTypes.string.isRequired,
-    like: PropTypes.string.isRequired,
+    likes: PropTypes.number.isRequired,
     link: PropTypes.string.isRequired,
   }).isRequired,
-  showAd: PropTypes.bool.isRequired,
-  showAdNotification: PropTypes.bool.isRequired,
-  advertisementCounter: PropTypes.number.isRequired,
-  resumeCounter: PropTypes.number.isRequired,
-  onClickHandler: PropTypes.func.isRequired,
+  isshowAd: PropTypes.bool.isRequired,
+  isshowAdNotification: PropTypes.bool.isRequired,
+  adNotificationRemainingTime: PropTypes.number.isRequired,
+  adRemainingTime: PropTypes.number.isRequired,
+  showAdNotification: PropTypes.func.isRequired,
+  showAd: PropTypes.func.isRequired,
   onLikeIncrease: PropTypes.func.isRequired,
-  showResumeNotification: PropTypes.bool.isRequired,
+ 
 };
 
 export default withAdvertisement(MovieDescription);
