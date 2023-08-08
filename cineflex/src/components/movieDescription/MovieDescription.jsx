@@ -51,6 +51,7 @@ const MovieDescription = (props) => {
     clearInterval(Adinteravel);
     clearInterval(resumeinteravel);
     setadvNotifTime(1);
+    setAdTime(0);
     showAdNotification(0, ADVERTISEMENT_NOTIFICATION.totalTime);
   }, [props.data.id]);
 
@@ -61,7 +62,6 @@ const MovieDescription = (props) => {
     if (advNotifTime < ADVERTISEMENT_NOTIFICATION.totalTime) {
       Adinteravel = setInterval(() => {
         showAdNotification(advNotifTime, ADVERTISEMENT_NOTIFICATION.totalTime);
-
         setadvNotifTime((prev) => prev + 1);
       }, 1000);
       setAdinteravel(Adinteravel);
