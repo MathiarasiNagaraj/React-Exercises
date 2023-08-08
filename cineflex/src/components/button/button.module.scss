@@ -4,7 +4,11 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
+  &:disabled{
+    cursor:not-allowed;
+  }
 }
+
 .lottery-button {
   background-color: $red;
   color: $white;

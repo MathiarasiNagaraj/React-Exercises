@@ -57,3 +57,12 @@ export const LANGUAGE_ICONS = {
 export const ADVERTISEMENT_IMAGE = {
     url: `/assets/advertisements/small-promos/Advertisement-Small-${(Math.floor(Math.random() * 2) + 1)}.png`,
 }
+
+export const ADVERTISEMENT_NOTIFICATION = {
+    message: "Advertisement in ",
+    totalTime:5
+}
+export const ADVERTISEMENT={
+    message: "Video will resume in  ",
+    totalTime:2
+}

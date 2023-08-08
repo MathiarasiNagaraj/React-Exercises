@@ -1,11 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./MovieDescription.module.scss";
 import withAdvertisement from "../../hoc/WithAdvertisement";
-import { ADVERTISEMENT_IMAGE } from "../../constants/AllMovie";
+import {
+  ADVERTISEMENT_IMAGE,
+  ADVERTISEMENT,
+  ADVERTISEMENT_NOTIFICATION,
+} from "../../constants/AllMovie";
 import { AiFillLike } from "react-icons/ai";
-
-
+import { MinuteTimeFormat } from "../../utils/util";
 
 /**
  * A component that displays movie details and handles ad notifications.
@@ -21,23 +24,65 @@ import { AiFillLike } from "react-icons/ai";
  * @returns {JSX.Element} MovieDescription component.
  */
 
-
 const MovieDescription = (props) => {
   const {
     data,
-    showAd,
+    isshowAd,
+    isshowAdNotification,
+    adNotificationRemainingTime,
+    adRemainingTime,
     showAdNotification,
-    advertisementCounter,
-    resumeCounter,
-    onClickHandler,
+    showAd,
+    stopAd,
     onLikeIncrease,
   } = props;
-    useEffect(() => {
-        onClickHandler()
-    },[data])
+  
+  const [advNotifTime, setadvNotifTime] = useState(0);
+  const [adTime, setAdTime] = useState(0);
+  const [Adinteravel, setAdinteravel] = useState();
+  const [resumeinteravel, setresumeInteravel] = useState();
+  useEffect(() => {
+    clearInterval(Adinteravel);
+    clearInterval(resumeinteravel);
+    setadvNotifTime(1);
+    showAdNotification(0, ADVERTISEMENT_NOTIFICATION.totalTime);  
+  },[props.data.id])
+ 
+  useEffect(() => {
+ 
+    let Adinteravel, resumeInteravel;
+    //to set adnotification message
+    if (advNotifTime < ADVERTISEMENT_NOTIFICATION.totalTime) {
+  
+      Adinteravel = setInterval(() => {
+        console.log( advNotifTime);
+        showAdNotification(advNotifTime, ADVERTISEMENT_NOTIFICATION.totalTime);
+ 
+        setadvNotifTime((prev) => prev + 1);
+      }, 1000);
+      setAdinteravel(Adinteravel);
+    }
+    else if (adTime <= ADVERTISEMENT.totalTime) {
+      resumeInteravel = setInterval(() => {
+        showAd(adTime, ADVERTISEMENT.totalTime);
+        setAdTime((prev) => prev + 1);
+      }, 1000);
+      setresumeInteravel(resumeInteravel);
+    }
+    else {
+      stopAd();
+    }
+    
+    return () => {
+      clearInterval(Adinteravel);
+      clearInterval(resumeInteravel)
+    };
+  }, [adNotificationRemainingTime, adRemainingTime, advNotifTime,props.data["id"]]);
+
+
   return (
     <div className={styles["movie-description"]}>
-      {!showAd && (
+      {!isshowAd && (
         <>
           <div className={styles["movie-name"]}>
             <h1>{data?.movie}</h1>
@@ -65,14 +110,21 @@ const MovieDescription = (props) => {
         </>
       )}
 
-      {showAd && (
+      {isshowAd && (
         <img src={ADVERTISEMENT_IMAGE.url} className={styles["ad-img"]} />
       )}
       <div className={styles["notification"]}>
-        {showAdNotification && (
-          <p>Advertisement in {advertisementCounter} secs</p>
+        {isshowAdNotification && (
+          <p>
+            {ADVERTISEMENT_NOTIFICATION.message}{" "}
+            {MinuteTimeFormat(adNotificationRemainingTime)}{" "}
+          </p>
         )}
-        {showAd&& !showAdNotification && <p>Resume in {resumeCounter} secs</p>}
+        {isshowAd && !isshowAdNotification && (
+          <p>
+            {ADVERTISEMENT.message} {MinuteTimeFormat(adRemainingTime)}{" "}
+          </p>
+        )}
       </div>
     </div>
   );
@@ -80,7 +132,7 @@ const MovieDescription = (props) => {
 
 MovieDescription.propTypes = {
   data: PropTypes.shape({
-    id:PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
     movie: PropTypes.string.isRequired,
     like: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
@@ -91,7 +143,7 @@ MovieDescription.propTypes = {
   resumeCounter: PropTypes.number.isRequired,
   onClickHandler: PropTypes.func.isRequired,
   onLikeIncrease: PropTypes.func.isRequired,
-  showResumeNotification: PropTypes.bool.isRequired
+  showResumeNotification: PropTypes.bool.isRequired,
 };
 
-export default withAdvertisement(MovieDescription,15,5,true);
+export default withAdvertisement(MovieDescription);

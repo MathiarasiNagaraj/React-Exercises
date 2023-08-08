@@ -2,7 +2,12 @@ import React, { useRef, useState, useEffect, useReducer } from "react";
 import PropTypes from "prop-types";
 import styles from "./ShortTeaser.module.scss";
 import withAdvertisement from "../../hoc/WithAdvertisement";
-import { ADVERTISEMENT_IMAGE } from "../../constants/Home";
+import {
+  ADVERTISEMENT,
+  ADVERTISEMENT_IMAGE,
+  ADVERTISEMENT_NOTIFICATION,
+} from "../../constants/Home";
+import { MinuteTimeFormat } from "../../utils/util";
 
 /**
  * A component that displays Short Teaser of movie and handel ad.
@@ -18,39 +23,105 @@ import { ADVERTISEMENT_IMAGE } from "../../constants/Home";
  * @returns {JSX.Element} ShortTeaser component.
  */
 
-const ShortTeaser = props => {
-
-  const { data ,showAd,showAdNotification,advertisementCounter,resumeCounter,onClickHandler} = props;
+const ShortTeaser = (props) => {
+  const {
+    data,
+    isshowAd,
+    isshowAdNotification,
+    adNotificationRemainingTime,
+    adRemainingTime,
+    showAdNotification,
+    showAd,
+    stopAd,
+  } = props;
 
   const videoRef = useRef();
+  const playRef = useRef();
+  const [isStarted, setIsStarted] = useState(false);
+
+  const onClickHandler = () => {
+    playRef.current.style.display = "none";
+    videoRef.current.paused
+      ? videoRef.current.play()
+      : videoRef.current.pause();
+  };
+  const onPlayHandler = () => {
+    if (videoRef.current?.currentTime === 0) {
+      setIsStarted(true);
+    }
+    playRef.current.style.display = "none";
+  };
+  const onPauseHandler = () => {
+    console.log("pausing");
+    playRef.current.style.display = "block";
+    videoRef.current.pause();
+    console.log("pause", Math.floor(videoRef.current?.currentTime));
+  };
+
+  const [adTime, setAdTime] = useState(0);
+  useEffect(() => {
+    let Adinteravel, resumeInteravel;
+    if (
+      Math.floor(Math.floor(videoRef.current?.currentTime)) <
+      ADVERTISEMENT_NOTIFICATION.totalTime - 1
+    ) {
+      if (isStarted) {
+        Adinteravel = setInterval(() => {
+          showAdNotification(
+            Math.floor(Math.floor(videoRef.current?.currentTime)),
+            ADVERTISEMENT_NOTIFICATION.totalTime
+          );
+        }, 1000);
+      }
+    } else if (adTime <= ADVERTISEMENT.totalTime) {
+      resumeInteravel = setInterval(() => {
+        showAd(adTime, ADVERTISEMENT.totalTime);
+        setAdTime((prev) => prev + 1);
+      }, 1000);
+      videoRef.current.style.display = "none";
+    } else {
+      stopAd();
+      videoRef.current.style.display = "block";
+      videoRef?.current?.play();
+    }
+    return () => {
+      clearInterval(Adinteravel);
+      clearInterval(resumeInteravel);
+    };
+  }, [adNotificationRemainingTime, adRemainingTime, isStarted]);
 
   return (
     <div className={styles["short-teaser-card"]}>
       <div className={styles["video"]}>
-        {!showAd && (
+        <div className={styles["video-img"]} onClick={onClickHandler}>
+          <div className={styles["play-icon"]}>
+            <img src="/assets/play.png" alt="play-icon" ref={playRef} />
+          </div>
+
           <video
             src={data.videoSrc}
             ref={videoRef}
-            controls={true}
-            webkit-playsInline={true}
-            playsInline={true}
-            disablePictureInPicture
-            controlsList="nodownload noplaybackrate"
-            onClick={onClickHandler}
+            onPlay={onPlayHandler}
+            onPause={onPauseHandler}
+            poster={"/assets/sindel-background.png"}
           />
-        )}
-        {showAd && (
-          <img src={ADVERTISEMENT_IMAGE.url} />
-        )}
+          {isshowAd && <img src={ADVERTISEMENT_IMAGE.url} />}
+        </div>
       </div>
 
       <h1>{data.title}</h1>
       <div className={styles["notification"]}>
-        {showAdNotification && (
-          <p>Advertisement in {advertisementCounter} secs</p>
+        {isshowAdNotification && (
+          <p>
+            {ADVERTISEMENT_NOTIFICATION.message}
+            {MinuteTimeFormat(adNotificationRemainingTime)}
+          </p>
         )}
-        {showAd && (
-          <p>Video will resume in {resumeCounter} secs</p>
+        {isshowAd && (
+          <p>
+            {ADVERTISEMENT.message}
+            {MinuteTimeFormat(adRemainingTime)}
+          </p>
         )}
       </div>
     </div>
@@ -59,17 +130,18 @@ const ShortTeaser = props => {
 
 ShortTeaser.propTypes = {
   data: PropTypes.shape({
-  id:PropTypes.string.isRequired,
-  movie: PropTypes.string.isRequired,
-  like: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-}).isRequired,
-showAd: PropTypes.bool.isRequired,
-showAdNotification: PropTypes.bool.isRequired,
-advertisementCounter: PropTypes.number.isRequired,
-resumeCounter: PropTypes.number.isRequired,
-onClickHandler: PropTypes.func.isRequired,
-onLikeIncrease: PropTypes.func.isRequired,
-showResumeNotification: PropTypes.bool.isRequired};
+    id: PropTypes.string.isRequired,
+    movie: PropTypes.string.isRequired,
+    like: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
+  }).isRequired,
+  showAd: PropTypes.bool.isRequired,
+  showAdNotification: PropTypes.bool.isRequired,
+  advertisementCounter: PropTypes.number.isRequired,
+  resumeCounter: PropTypes.number.isRequired,
+  onClickHandler: PropTypes.func.isRequired,
+  onLikeIncrease: PropTypes.func.isRequired,
+  showResumeNotification: PropTypes.bool.isRequired,
+};
 
-export default withAdvertisement(ShortTeaser,5,2,false);
+export default withAdvertisement(ShortTeaser, 5, 2, false);

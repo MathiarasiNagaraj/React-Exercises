@@ -71,7 +71,7 @@ const Home = () => {
         <div className={styles["trailer"]}>
           <h1>{TRAILER.title}</h1>
           {!user.userEmail ? (
-            <p>
+            <p className={styles["sign-in"]}>
               {TRAILER.description} <Link to="/login">{TRAILER.link}</Link>
             </p>
           ) : (

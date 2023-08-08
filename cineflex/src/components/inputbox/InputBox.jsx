@@ -13,10 +13,10 @@ import styles from './InputBox.module.scss'
 
 const InputBox = forwardRef((props, ref) => {
   
-  const { placeholder, styleName } = props
+  const { placeholder, styleName ,onChange} = props
 
   return (
-    <input placeholder={placeholder} className={styles[styleName]} ref={ref}></input>
+    <input placeholder={placeholder} className={styles[styleName]} ref={ref} onChange={onChange}></input>
   )
 });
 

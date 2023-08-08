@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import styles from "./Navlink.module.scss";
 import { useAuthContext } from "../../auth/AuthContext";
 
@@ -16,10 +16,12 @@ import { useAuthContext } from "../../auth/AuthContext";
 
 const Navlink = (props) => {
   const { name, url, isPrivate } = props.data;
+  const location = useLocation();
+
   const { user } = useAuthContext();
   return (
     <>
-      {!isPrivate || (isPrivate && user.userEmail) ? (
+      {(!isPrivate || (isPrivate && user.userEmail) )&& location.pathname!=='/login'? (
         <NavLink
           to={url}
           className={({ isActive }) =>

@@ -11,8 +11,16 @@ import { useAuthContext } from '../../auth/AuthContext'
  */
 
 const Header = () => {
-  const { user } = useAuthContext();
-
+  const { user,setUser } = useAuthContext();
+  const onLogoutHandler = () => {
+    setUser(() => ({
+      userEmail: "",
+      userPassword: "",
+      userName:"",
+    }));
+    localStorage.setItem("islogged", false);
+    localStorage.setItem("userName", null);
+}
   return (
       <div className={styles["header"]}>
       <div className={styles["logo"]}>
@@ -22,7 +30,7 @@ const Header = () => {
           </div>
       <Navbar />
       <div className={styles["user"]}>
-   {!user.userEmail?<NavLink to="/login">LOGIN</NavLink >:<>Hi {user.userEmail} | <NavLink to="/">LOGOUT </NavLink></>}
+   {!user.userEmail?<NavLink to="/login">LOGIN</NavLink >:<>Hi {user.userName} | <NavLink to="/" onClick={onLogoutHandler}>LOGOUT </NavLink></>}
 
       </div>
     </div>

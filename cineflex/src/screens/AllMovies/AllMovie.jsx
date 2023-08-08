@@ -17,7 +17,7 @@ const AllMovie = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [index, setIndex] = useState(6);
   const [showMore, setShowMore] = useState(true);
-
+  const [loading, setLoading] = useState(true);
   //fetching data when the page loaded
   useEffect(() => {
     const fetchData = () => {
@@ -27,7 +27,9 @@ const AllMovie = () => {
           const newData = data.map((data) => {
             return { ...data, likes: parseInt(data.likes, 10) };
           });
+          setLoading(false);
           setMovies(newData);
+
           //setting the first movie in array for moviedescription
           if (data.length > 0) {
             setSelectedMovie(newData[0]);
@@ -82,15 +84,12 @@ const AllMovie = () => {
   };
   return (
     <>
-      {movies.length < 0 ? (
+      {loading ? (
         <div className={styles["loader"]}>
           <Bars
-            height="80"
-            width="80"
-            color="#4fa94d"
+
+            color="#f5a522"
             ariaLabel="bars-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
             visible={true}
           />{" "}
         </div>

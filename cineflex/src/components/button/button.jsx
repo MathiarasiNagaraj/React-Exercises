@@ -12,9 +12,9 @@ import styles from './Button.module.scss'
  */
 
 const Button = props => {
-  const { styleName, value, onClick } = props
+  const { styleName, value, onClick,disabled } = props
   return (
-      <button className={styles[styleName]} onClick={onClick}>{ value}</button>
+      <button className={styles[styleName]} onClick={onClick} disabled={disabled}>{ value}</button>
   )
 }
 

@@ -19,6 +19,7 @@ const LoginForm = () => {
     setUser(() => ({
       userEmail: "",
       userPassword: "",
+      userName:""
     }));
   }, []);
   const emailRef = useRef(null);
@@ -38,7 +39,10 @@ const LoginForm = () => {
       setUser(() => ({
         userEmail: emailValue,
         userPassword: passwordValue,
+        userName:foundUser.name
       }));
+      localStorage.setItem("islogged", true);
+      localStorage.setItem("userName", foundUser.name);
       formRef.current.reset();
       navigate("/",{replace:true});
     }
