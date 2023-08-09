@@ -1,48 +1,43 @@
+$black: #151515;
+$white: #ffffff;
+$blue: #417abf;
 
-$black:#151515;
-$white:#ffffff;
-$blue:#417abf;
+.now-showing {
+  background-color: $black;
+  color: $white;
+  padding: 33px 250px 190px;
 
-.now-showing{
-background-color: $black;
-color:$white;
-padding:33px 250px 190px;
-
-.video-img {
+  .video-img {
     position: relative;
-height: 670px;
+    height: 670px;
     .play-icon {
       position: absolute;
       top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-      img{
+      left: 50%;
+      transform: translate(-50%, -50%);
+      img {
         height: 50px;
         width: 50px;
       }
     }
   }
-video{
-
+  video {
     object-fit: cover;
     height: 100%;
     width: 100%;
-}
-h4{
+  }
+  h4 {
     font-size: 25px;
-color:$blue
-}
-h1{
+    color: $blue;
+  }
+  h1 {
     font-size: 52px;
     font-weight: 400;
     margin-bottom: 20px;
     margin-top: 33px;
-}
-p {
-margin-top: 28px;
+  }
+  p {
+    margin-top: 28px;
     font-size: 25px;
-
-}
-
-
+  }
 }
