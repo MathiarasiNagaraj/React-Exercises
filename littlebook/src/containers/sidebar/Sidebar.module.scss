@@ -1,0 +1,20 @@
+@import '../../styles/colors';
+@import '../../styles/font-family';
+@import '../../styles/mixins';
+
+.sidebar{
+    @include flexbox-vertical();
+    background-color: $lighttheme-primary;
+padding: 45px 55px 70px;
+    width:250px;
+    height:100vh;
+    gap:200px;
+   
+    font-family: $primary-font;
+
+    h1{
+        font-family: $secondary-font;
+        font-weight: 500;
+        font-size: 26px;
+    }
+}

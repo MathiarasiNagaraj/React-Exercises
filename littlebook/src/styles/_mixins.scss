@@ -1,0 +1,8 @@
+@mixin flexbox-vertical{
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flexbox{
+    display: flex;
+}
