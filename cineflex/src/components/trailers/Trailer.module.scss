@@ -1,0 +1,37 @@
+$black: #000000;
+$white: #ffffff;
+$blue:#6a97cc;
+.trailer {
+    p {
+      font-weight: 500;
+      font-size: 22px;
+      margin-top: 5px;
+      margin-bottom: 25px;
+      a{
+        color:$blue;
+      cursor: pointer;
+      text-decoration: none;
+      }
+     
+    }
+
+    .movie {
+      display: flex;
+
+      gap: 46px;
+      p {
+        text-align: justify;
+        font-size: 26px;
+        margin-top: 25px;
+        margin-bottom: 30px;
+        font-weight: 500;
+        padding-right: 50px;
+      }
+
+      img {
+        max-height: 311px;
+        width: 460px;
+        object-fit: cover;
+      }
+    }
+  }

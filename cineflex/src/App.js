@@ -1,54 +1,55 @@
-import { lazy,Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Fallback } from "./components/fallback/Fallback";
+import {ROUTES } from "./constants/Route";
 import Header from "./containers/header/Header";
-import AllMovie from "./screens/AllMovies/AllMovie";
+import Protected from "./protected/Proteced";
 import Home from "./screens/Home/Home";
-import Login from "./screens/Login/Login";
-import {Bars} from "react-loader-spinner"
-const LazyNowShowing=lazy(()=>import("./screens/NowShowing/NowShowing"))
-const LazyAllMovie = lazy(() => import("./screens/AllMovies/AllMovie"))
-const LazyLogin=lazy(()=>import("./screens/Login/Login"))
+
+
+const LazyNowShowing = lazy(() => import("./screens/NowShowing/NowShowing"));
+const LazyAllMovie = lazy(() => import("./screens/AllMovies/AllMovie"));
+const LazyLogin = lazy(() => import("./screens/Login/Login"));
+
+
 function App() {
+  const islogged = JSON.parse(localStorage.getItem("islogged"));
   return (
     <div className="App">
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/allMovies" element={ <Suspense fallback={<Bars
-              height="80"
-              width="80"
-              color="#4fa94d"
-              ariaLabel="bars-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
-            />}>
-              <LazyAllMovie />
-            </Suspense>} />
-          <Route path="/showTime" element={
-            <Suspense fallback={<Bars
-              height="80"
-              width="80"
-              color="#4fa94d"
-              ariaLabel="bars-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
-            />}>
-              <LazyNowShowing />
-            </Suspense>}/>
-          <Route path="/login" element={ <Suspense fallback={<Bars
-              height="80"
-              width="80"
-              color="#4fa94d"
-              ariaLabel="bars-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
-            />}>
-              <LazyLogin />
-            </Suspense>}/>
+          <Route index path={ROUTES.HOME.path} element={<Home />} />
+          <Route
+            path={ROUTES.ALLMOVIES.path}
+            element={
+              <Suspense fallback={<Fallback />}>
+                <LazyAllMovie />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path={ROUTES.SHOWTIME.path}
+            element={
+              <Protected isLoggedIn={islogged} redirection={ROUTES.SHOWTIME.redirectionURL}>
+            <Suspense fallback={<Fallback />}>
+              <LazyNowShowing/>
+            </Suspense>
+              </Protected>
+              
+            }
+          />
+          
+
+          <Route
+            path={ROUTES.LOGIN.path}
+            element={
+              <Suspense fallback={<Fallback />}>
+                <LazyLogin />
+              </Suspense>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

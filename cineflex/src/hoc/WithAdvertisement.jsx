@@ -20,6 +20,15 @@ const withAdvertisement = (WrappedComponent) => {
         adRemainingTime: 0,
       };
     }
+
+    setAdTimer=(time)=>
+    {
+     this.setState({
+       adRemainingTime:time
+     })
+
+    }
+ 
     //method to show ad notification message 
     //1.set show ad notification to true
     //2.set ad to false
@@ -35,13 +44,13 @@ const withAdvertisement = (WrappedComponent) => {
     //1.set show ad notification to false
     //2.set ad to true
     //3.change the time of ad remaining time
-    showAd = (remainingTime, totalTime) => {
+    showAd = (remainingTime) => {
       this.setState({
         isshowAd: true,
         isshowAdNotification: false,
-        adRemainingTime: totalTime - remainingTime,
+        adRemainingTime:remainingTime-1,
       });
-      
+     
     };
  //method to stop Ad
     //1.set show ad notification to false
@@ -57,6 +66,7 @@ const withAdvertisement = (WrappedComponent) => {
         <WrappedComponent
           {...this.props}
           isshowAd={this.state.isshowAd}
+          setAdTimer={this.setAdTimer}
           stopAd={this.stopAd}
           adNotificationRemainingTime={this.state.adNotificationRemainingTime}
           isshowAdNotification={this.state.isshowAdNotification}

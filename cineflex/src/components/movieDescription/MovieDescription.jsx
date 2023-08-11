@@ -31,6 +31,8 @@ const MovieDescription = (props) => {
     isshowAdNotification,
     adNotificationRemainingTime,
     adRemainingTime,
+    setAdTimer,
+    setAdNotifiTimer,
     showAdNotification,
     showAd,
     stopAd,
@@ -38,7 +40,7 @@ const MovieDescription = (props) => {
   } = props;
 
   const [advNotifTime, setadvNotifTime] = useState(0);
-  const [adTime, setAdTime] = useState(0);
+
   const [Adinteravel, setAdinteravel] = useState();
   const [resumeinteravel, setresumeInteravel] = useState();
 
@@ -51,15 +53,18 @@ const MovieDescription = (props) => {
     clearInterval(Adinteravel);
     clearInterval(resumeinteravel);
     setadvNotifTime(1);
-    setAdTime(0);
+    setAdTimer(ADVERTISEMENT.totalTime);
+    setAdNotifiTimer(ADVERTISEMENT_NOTIFICATION.totalTime);
     showAdNotification(0, ADVERTISEMENT_NOTIFICATION.totalTime);
   }, [props.data.id]);
+
 
   //when adNotificationtime or adtime change
   useEffect(() => {
     let Adinteravel, resumeInteravel;
 //if the (current)adNotfication  is less than total AD-notification length increase the current time by 1 for every second
     if (advNotifTime < ADVERTISEMENT_NOTIFICATION.totalTime) {
+   
       Adinteravel = setInterval(() => {
         showAdNotification(advNotifTime, ADVERTISEMENT_NOTIFICATION.totalTime);
         setadvNotifTime((prev) => prev + 1);
@@ -67,12 +72,12 @@ const MovieDescription = (props) => {
       setAdinteravel(Adinteravel);
 
     }
-    //if the ad-notification is equal to total AD-notification length then show the ad for total ad length
-    //increase the adtime by 1 for every second until current adremaining time is less than total ad duration
-    else if (adTime <= ADVERTISEMENT.totalTime) {
+    //if the ad-notification is greater than 1 then show the ad for total ad length
+
+    else if (adRemainingTime >= 1) {
+  
       resumeInteravel = setInterval(() => {
-        showAd(adTime, ADVERTISEMENT.totalTime);
-        setAdTime((prev) => prev + 1);
+        showAd(adRemainingTime);
       }, 1000);
       setresumeInteravel(resumeInteravel);
     }
@@ -89,6 +94,8 @@ const MovieDescription = (props) => {
     adNotificationRemainingTime,
     adRemainingTime,
     advNotifTime,
+    Adinteravel,
+    resumeinteravel,
     props.data["id"],
   ]);
 
@@ -112,7 +119,7 @@ const MovieDescription = (props) => {
             </div>
           </div>
           <h4>{data?.likes} Likes</h4>
-          <img src={data?.link} />
+          <img src={data?.link} alt={data?.movie} />
           <p className={styles["movie-about"]}>{data?.description}</p>
 
           <h2>ACTORS</h2>
@@ -123,7 +130,7 @@ const MovieDescription = (props) => {
       )}
 
       {isshowAd && (
-        <img src={ADVERTISEMENT_IMAGE.url} className={styles["ad-img"]} />
+        <img src={ADVERTISEMENT_IMAGE.url} className={styles["ad-img"]} alt="advertisement" />
       )}
       <div className={styles["notification"]}>
         {isshowAdNotification && (

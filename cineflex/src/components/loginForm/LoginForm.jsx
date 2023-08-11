@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, {  useRef } from "react";
 import styles from "./LoginForm.module.scss";
 import InputBox from "../inputbox/InputBox";
 import Button from "../button/Button";
@@ -27,7 +27,7 @@ const LoginForm = () => {
     //finding the user with given username and password
     const foundUser = users.find(
       (user) =>
-        user.userEmail == emailValue && user.userPassword == passwordValue
+        user.userEmail === emailValue && user.userPassword === passwordValue
     );
     //if the user found set that to user in context and navigate to home
     if (foundUser) {

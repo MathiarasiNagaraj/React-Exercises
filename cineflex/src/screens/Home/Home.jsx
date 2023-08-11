@@ -1,21 +1,18 @@
 import React, { useState,useEffect } from "react";
-import Button from "../../components/button/Button";
-import InputBox from "../../components/inputbox/InputBox";
+
 import {
   LANGUAGE_ICONS,
   LOTTERY,
   POSTER,
-  SHORT_TEASER,
-  TRAILER,
 } from "../../constants/Home";
 import styles from "./Home.module.scss";
 import Icon from "../../components/icon/Icon";
 import { getShortTeasers } from "../../services/MovieService";
 import ShortTeaser from "../../components/shortTeaser/ShortTeaser";
-import { useAuthContext } from "../../auth/AuthContext";
-import { Link } from "react-router-dom";
 import ErrorBoundary from "../../error/ErrorBoundary";
 import Lottery from "../../components/lottery/Lottery";
+import Trailer from "../../components/trailers/Trailer";
+import ShortTeasers from "../../containers/teasers/ShortTeasers";
 
 /**
  * A component that displays Home page content.
@@ -25,7 +22,7 @@ import Lottery from "../../components/lottery/Lottery";
 
 const Home = () => {
   const [teasers, setTeasers] = useState([]);
-  const { user } = useAuthContext();
+ 
 
 
 //fetching short teaser when component loaded
@@ -43,7 +40,7 @@ const Home = () => {
   }, []);
   //mapping shortTeaser component with teaser data
   const teaser =
-    teasers &&
+
     teasers?.map((item) => <ShortTeaser key={teasers.indexOf(item)} data={item} />);
     //mapping Icon component with icon data
     const icons = LANGUAGE_ICONS.icons.map((item) => (
@@ -69,36 +66,8 @@ const Home = () => {
         <Lottery />
       </ErrorBoundary>
       <div className={styles["container"]}>
-        <div className={styles["trailer"]}>
-          <h1>{TRAILER.title}</h1>
-          {!user.userEmail ? (
-            <p className={styles["sign-in"]}>
-              {TRAILER.description} <Link to="/login">{TRAILER.link}</Link>
-            </p>
-          ) : (
-            <p></p>
-          )}
-          <div className={styles["movie"]}>
-            <img src={TRAILER.moviePoster} alt={TRAILER.movieTitle}></img>
-            <div>
-              <h1>{TRAILER.movieTitle}</h1>
-              <p>{TRAILER.movieDescription}</p>
-              {!user.userEmail ? (
-                <Link to="/login">
-                  <Button value={TRAILER.button} styleName="watchnow-button" />
-                </Link>
-              ) : (
-                <Link to="/showTime">
-                  <Button value={TRAILER.button} styleName="watchnow-button" />
-                </Link>
-              )}
-            </div>
-          </div>
-        </div>
-        <div className={styles["short-teaser"]}>
-          <h1>{SHORT_TEASER.title}</h1>
-          <div>{teaser}</div>
-        </div>
+       <Trailer/>
+        <ShortTeasers data={teaser} />
         <div className={styles["language-container"]}>
           <p>{LANGUAGE_ICONS.description}</p>
           <div> {icons}</div>

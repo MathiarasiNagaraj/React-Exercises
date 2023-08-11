@@ -43,25 +43,25 @@ const AllMovie = () => {
   }, []);
 
   //onclicking the movie card the data should change
-  const onMoviePosterClickHandler = (data) => {
-    const movieData = movies.find((item) => item.id === data.id);
+  const onMoviePosterClickHandler = (id) => {
+    const movieData = movies?.find((item) => item?.id === id);
     setSelectedMovie(movieData);
   };
 
   //updating movie description when whole movies is updated
   useEffect(() => {
-    onMoviePosterClickHandler(selectedMovie);
+   selectedMovie&& onMoviePosterClickHandler(selectedMovie.id);
   }, [movies]);
 
   //like increase handler ,update whole list with given like for given  movie like
   const onIncreaseLikeHandler = (data) => {
-    const updatedMovieLikes = movies.map((movie) => {
+    const updatedMovies = movies.map((movie) => {
       if (movie.id === data.id) {
         return { ...movie, likes: data.like };
       }
       return movie;
     });
-    setMovies(updatedMovieLikes);
+    setMovies(updatedMovies);
   };
 
   //to update movie whenever the movie data is updating

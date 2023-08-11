@@ -1,5 +1,4 @@
 import React from "react";
-import { useAuthContext } from "../../auth/AuthContext";
 import { NAV_LINKS } from "../../constants/Navbar";
 import Navlink from "../navlink/Navlink";
 import styles from "./Navbar.module.scss";

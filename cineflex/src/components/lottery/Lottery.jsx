@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import styles from "./Lottery.module.scss";
 import { LOTTERY } from "../../constants/Home";
-import Button from "../../components/button/Button";
+import Button from "../button/Button";
 import InputBox from "../../components/inputbox/InputBox";
 import { containsNonNumberCharacters } from "../../utils/util";
 

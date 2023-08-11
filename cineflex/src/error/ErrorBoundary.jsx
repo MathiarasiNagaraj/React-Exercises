@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import  { Component } from "react";
 
 
 //Error boundary class that catch the error and render the fall back ui

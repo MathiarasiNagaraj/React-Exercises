@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styles from "./MovieCard.module.scss";
 import { AiFillLike } from "react-icons/ai";
@@ -32,7 +32,7 @@ const MovieCard = (props) => {
   };
   return (
     <div className={styles["movie-card"]}>
-      <img src={link} onClick={() => onClick(data)} />
+      <img src={link} onClick={() => onClick(id)} alt={movie} />
       <div className={styles["movie-details"]}>
         <div>
           <h2>{movie}</h2>

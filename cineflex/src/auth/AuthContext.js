@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
     const islogged = localStorage.getItem("islogged");
     if (islogged) {
       const name = localStorage.getItem("userName");
-      const foundUser = users.find((user) => user.name == name);
+      const foundUser = users.find((user) => user.name === name);
       if (foundUser) {
         setUser(() => ({
           userEmail: foundUser.userEmail,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './Header.module.scss'
 import { LOGO } from '../../constants/Home'
 import{Link, NavLink,useLocation} from "react-router-dom"
