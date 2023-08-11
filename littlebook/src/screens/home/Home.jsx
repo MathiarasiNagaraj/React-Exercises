@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Sidebar from '../../containers/sidebar/Sidebar'
-import Blogs from '../../containers/blogs/Blogs'
+
 import styles from './Home.module.scss'
+import BlogsLayout from '../../containers/blogLayout/BlogsLayout'
 const Home = props => {
+
+
   return (
       <div className={styles["home"]}>
           <Sidebar />
-          <Blogs />
+      <BlogsLayout/>
           
     </div>
   )

@@ -3,18 +3,23 @@
 @import '../../styles/mixins';
 
 .sidebar{
-    @include flexbox-vertical();
-    background-color: $lighttheme-primary;
+    @include flexbox($direction:column,$justify-content:space-between);
+    @include flexbox-basis(15.5%);
+    background-color: $lightTheme-primary;
 padding: 45px 55px 70px;
-    width:250px;
-    height:100vh;
-    gap:200px;
+
+
+    gap:350px;
    
-    font-family: $primary-font;
+    font-family: $main-font-family;
 
     h1{
-        font-family: $secondary-font;
+        font-family: $heading-font-family;
         font-weight: 500;
         font-size: 26px;
+        span{
+            font-weight: 300;
+            color: $support-purple;
+        }
     }
 }

@@ -1,0 +1,35 @@
+@import "../../styles/colors";
+@import "../../styles/font-family";
+@import "../../styles/mixins";
+.blog-snippets {
+  @include flexbox-basis(40%);
+  padding: 40px;
+  padding-bottom: 0;
+  height: 100vh;
+  background-color: $lightTheme-tertiary;
+.blog-search{
+    @include flexbox();
+    gap:10px;
+
+}
+  .blog-list {
+    @include flexbox($direction: column, $wrap: nowrap);
+    gap: 17px;
+height: 87vh;
+   overflow-y:auto;
+    margin-top: 30px;
+    border-radius: 1px solid #111111;
+    &::-webkit-scrollbar {
+
+        width: 5px; /* Change the width as needed */
+      }
+      &::-webkit-scrollbar-track {
+        background-color: #f7eaf7; /* Change the color as needed */
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        border-radius: 50px;
+        background-color: $support-lightPurple; /* Change the color as needed */
+      }
+  }
+}

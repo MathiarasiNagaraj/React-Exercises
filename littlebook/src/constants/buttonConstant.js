@@ -1,5 +1,6 @@
 export const NEW = {
-    name:"NEW"
+    name: "NEW",
+    
 }
 export const ADD = {
     name:"ADD"
@@ -12,4 +13,15 @@ export const SAVE = {
 }
 export const CANCEL = {
     name:"CANCEL"
+}
+
+export const VIEW_MEMBERS = {
+    name:"View Members"
+}
+
+export const DARK_MODE = {
+    name:"Switch to Dark Mode"
+}
+export const LIGHT_MODE = {
+    name:"Switch to Light Mode"
 }

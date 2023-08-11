@@ -1,8 +1,11 @@
-@mixin flexbox-vertical{
+@mixin flexbox($direction: row, $justify-content: flex-start,$wrap:wrap) {
     display: flex;
-    flex-direction: column;
-}
+    flex-direction: $direction;
+    justify-content: $justify-content;
+    flex-wrap:$wrap;
+  }
 
-@mixin flexbox{
-    display: flex;
+@mixin flexbox-basis($basis:auto)
+{
+    flex-basis: $basis;
 }

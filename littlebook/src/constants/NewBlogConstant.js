@@ -4,6 +4,3 @@ export const ADD_NEW_BLOG = {
     description:"Write Content here"
 }
 
-export const SEARCH_BLOG = {
-    message:'Search Blogs'
-}

@@ -1,0 +1,15 @@
+@import '../../styles/colors';
+@import '../../styles/font-family';
+@import '../../styles/mixins';
+
+.search-box{
+    padding:15px 20px;
+    width: 350px;
+    border: none;
+    outline: none;
+    background-color: $lightTheme-secondary;
+    border-radius: 30px;
+    font-family: $main-font-family;
+    font-size: 14px;
+
+}

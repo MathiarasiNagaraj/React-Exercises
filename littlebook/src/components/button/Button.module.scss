@@ -1,0 +1,22 @@
+@import '../../styles/colors';
+@import '../../styles/font-family';
+@import '../../styles/mixins';
+
+button{
+    border: none;
+    cursor: pointer;
+    font-family: $main-font-family;
+}
+.add-btn{
+    background-color: $support-purple;
+    padding: 15px 50px;
+    color:$lightTheme-primary;
+    border-radius: 30px;
+    font-size: 18px;
+
+}
+.sidebar-btn{
+    background-color: $lightTheme-primary;
+    font-size: 15px;
+    margin-top: 10px;
+}
