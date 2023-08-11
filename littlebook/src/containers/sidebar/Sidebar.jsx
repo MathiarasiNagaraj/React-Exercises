@@ -7,6 +7,7 @@ import { FILTER, TITLE } from '../../constants/GeneralConstant'
 import Button from '../../components/button/Button'
 import { DARK_MODE, VIEW_MEMBERS } from '../../constants/ButtonConstant'
 import { extractFirstWord } from '../../utils/util'
+import CheckBox from '../../components/checkBox/CheckBox'
 const Sidebar = props => {
 
   return (
@@ -14,7 +15,12 @@ const Sidebar = props => {
           <h1>{ extractFirstWord(TITLE)}</h1>
           
           <div className={styles["filter"]}>
-       {FILTER}  
+              {FILTER}  
+              <div>
+                  <CheckBox />
+                  <CheckBox />
+                  <CheckBox />
+                  </div>
           </div>
 <div>
           <Button name={VIEW_MEMBERS.name } styleName="sidebar-btn" />

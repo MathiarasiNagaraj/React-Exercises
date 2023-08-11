@@ -1,13 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styles from './CheckBox.module.scss'
+import React from "react";
+import PropTypes from "prop-types";
+import styles from "./CheckBox.module.scss";
 
-const CheckBox = props => {
-  return (
-    <div>CheckBox</div>
-  )
-}
+const CheckBox = (props) => {
+    return (
+      <div className={styles["check-box"]}>
+    <label className={styles["checkbox-container"]}>
+      <input type="checkbox" />
+      <span className={styles["checkmark"]}></span>
+      Check me
+            </label>
+            </div>
+  );
+};
 
-CheckBox.propTypes = {}
+CheckBox.propTypes = {};
 
-export default CheckBox
+export default CheckBox;

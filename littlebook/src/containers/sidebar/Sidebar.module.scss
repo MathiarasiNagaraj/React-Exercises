@@ -8,15 +8,13 @@
     background-color: $lightTheme-primary;
 padding: 45px 55px 70px;
 
-
-    gap:350px;
-   
     font-family: $main-font-family;
 
     h1{
         font-family: $heading-font-family;
         font-weight: 500;
         font-size: 26px;
+        cursor: pointer;
         span{
             font-weight: 300;
             color: $support-purple;
