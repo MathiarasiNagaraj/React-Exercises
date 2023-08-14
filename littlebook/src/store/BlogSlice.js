@@ -36,7 +36,7 @@ const BlogSlice = createSlice({
 
             const newBlog = action.payload;
             state.blogs.push(newBlog);
-            state.blogs.map(blog => {
+        
          
                 if (!state.filterType.includes(newBlog.type)) {
                 
@@ -45,7 +45,7 @@ const BlogSlice = createSlice({
                 }
              
                   
-            })
+        
         
             
         },
@@ -56,6 +56,29 @@ const BlogSlice = createSlice({
             
         },
         search(state, action) {
+            const searchFilteredBlogs = [];
+            const searchTerm = action.payload;
+            console.log( action.payload==='', "search in slice");
+            
+            state.blogs.forEach(blog => {
+                console.log(blog.title," ",blog.details)
+                if (blog.title.includes(searchTerm) || blog.details.includes(searchTerm))
+                {
+                    searchFilteredBlogs.push(blog);
+                    }
+            })
+            console.log(searchFilteredBlogs);
+           
+            if (searchTerm === '') {
+                console.log("calling")
+                state.blogs = state.blogs;
+            }
+            else {
+                console.log("calling else")
+                state.blogs = searchFilteredBlogs;
+            }
+            
+
             
         },
         toggleEdit(state) {

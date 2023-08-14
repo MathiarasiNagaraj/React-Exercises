@@ -12,7 +12,7 @@ const BlogSnippetCard = props => {
   const theme = useSelector(state => state.theme.mode);
   const selected = useSelector(state => state.blog.selectedBlog);
   const isSelected = selected.title === content.title;
-  console.log(isSelected);
+
   return (
     <div className={`${styles["blog-snippet"]}  ${styles[theme]} ${isSelected&&styles["selected"]}`  } onClick={()=>onClick(content)}>
       <h1>{title}</h1>
