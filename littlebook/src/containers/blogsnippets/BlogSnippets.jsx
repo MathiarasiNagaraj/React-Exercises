@@ -7,15 +7,21 @@ import { NEW } from '../../constants/ButtonConstant'
 import BlogSnippetCard from '../../components/blogSnippetCard/BlogSnippetCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { ModalAction } from '../../store/ModalSlice'
+import { BlogAction } from '../../store/BlogSlice'
 
 const BlogSnippets = props => {
-    const{blogs}=props
-    const blogsnippets = blogs.map((blog) => <BlogSnippetCard content={blog} key={blog.id } />)
+    const { blogs } = props
+    
+    const onBlogSelectHandler = (data) => {
+       dispatch(BlogAction.changeSelectedBlog(data))
+   }
+    const blogsnippets = blogs.slice().reverse().map((blog) => <BlogSnippetCard  onClick={onBlogSelectHandler} content={blog} key={blogs.indexOf(blog) } />)
     const theme = useSelector(state => state.theme.mode);
     const dispatch = useDispatch();
     const onAddNewBlogHandler = () => {
     dispatch(ModalAction.showAddNewBlogModal())
-}
+    }
+
   return (
       <div className={`${styles["blog-snippets"]} ${styles[theme]}`}>
           <div className={styles["blog-search"]}>

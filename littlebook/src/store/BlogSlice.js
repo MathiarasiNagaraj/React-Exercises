@@ -5,13 +5,48 @@ const BlogSlice = createSlice({
     initialState: {
         blogs: [],
         searchTerm: "",
-        filterType:[]
+        filterType:[],
+        isEditMode: false,
+        selectedBlog:{}
     },
     reducers: {
-        fetch(state) {
+        store(state, action) {
+        
+            const filtertypes=[]
+            state.blogs = action.payload;
+
+            state.selectedBlog = state.blogs[0];
+           
+
+            state.blogs.map(blog => {
+         
+                if (!filtertypes.includes(blog.type)) {
+                
+                    filtertypes.push( blog.type );
+                   
+                }
+             
+                  
+            })
+            state.filterType = filtertypes;
+          
             
         },
-        add(state,action) {
+        add(state, action) {
+
+            const newBlog = action.payload;
+            state.blogs.push(newBlog);
+            state.blogs.map(blog => {
+         
+                if (!state.filterType.includes(newBlog.type)) {
+                
+                    state.filterType.push( newBlog.type );
+                   
+                }
+             
+                  
+            })
+        
             
         },
         edit(state, action) {
@@ -22,7 +57,14 @@ const BlogSlice = createSlice({
         },
         search(state, action) {
             
+        },
+        toggleEdit(state) {
+            state.isEditMode = !state.isEditMode;
+        },
+        changeSelectedBlog(state, action) {
+            state.selectedBlog = action.payload;
         }
+        
 
     }
 })

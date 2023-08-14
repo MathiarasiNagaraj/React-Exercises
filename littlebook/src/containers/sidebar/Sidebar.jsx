@@ -18,13 +18,17 @@ const Sidebar = props => {
 
   const theme = useSelector(state => state.theme.mode);
   const show = useSelector(state => state.modal.isshowMemberModal);
+  const filterType = useSelector(state => state.blog.filterType);
   const onToggleModeHandler = () => {
     dispatch(ThemeAction.toggle());
   }
   const onViewMemberHandler = () => {
     dispatch(ModalAction.showMemberModal());
-  console.log(show,"kfkhg")
+
   }
+
+  const filters = filterType?.map((type) => <CheckBox label={ type} />)
+
   return (
     <div className={styles["sidebar"]}>
 
@@ -32,10 +36,9 @@ const Sidebar = props => {
           
           <div className={styles["filter"]}>
               <h2>{FILTER}  </h2>
-              <div>
-                  <CheckBox />
-                  <CheckBox />
-                  <CheckBox />
+        <div>
+          
+                 {filters}
                   </div>
           </div>
 <div>

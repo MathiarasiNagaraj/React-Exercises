@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import styles from './InputBox.module.scss'
 
-const InputBox = props => {
-    const {placeHolder,styleName}=props
+const InputBox = forwardRef((props, ref) => {
+  const { placeHolder, styleName, value, onChange } = props
   return (
-      <input placeholder={ placeHolder} className={styles[styleName]} />
+    <input type="text" ref={ref} placeholder={placeHolder} className={styles[styleName]} value={value} onChange={() => onChange(ref.current.value)} />
   )
-}
+});
 
 InputBox.propTypes = {}
 

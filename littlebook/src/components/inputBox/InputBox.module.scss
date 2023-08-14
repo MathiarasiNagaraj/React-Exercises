@@ -2,14 +2,31 @@
 @import '../../styles/font-family';
 @import '../../styles/mixins';
 
+input{
+    border: none;
+    outline: none;
+    &::placeholder{
+        color:$support-darkgrey;
+    }
+ 
+}
 .search-box{
     padding:15px 20px;
     width: 350px;
-    border: none;
-    outline: none;
+    font-family: $main-font-family;
     background-color: $lightTheme-secondary;
     border-radius: 30px;
-    font-family: $main-font-family;
+
     font-size: 14px;
 
+}
+.newBlog-box{
+    font-family: $heading-font-family;
+font-size: 25px;
+}
+.edit-blog-title{
+    font-family: $heading-font-family;
+    margin: 20px 0px;
+    font-weight: 500;
+    font-size: 32px;
 }

@@ -11,7 +11,9 @@
   .light{
     background-color: $lightTheme-primary;
   }
-
+.selected{
+    background-color: $support-blue;
+}
 .blog-snippet{
     font-family: $main-font-family;
     box-shadow: rgba(0, 0, 0, 0.21) 0px 2px 5px;

@@ -17,5 +17,15 @@
         line-height: 1.6;
         font-size: 17px;
         margin-bottom: 30px;
+        height: 350px;
+        overflow-y: auto;
+    }
+    .edit-form{
+        @include flexbox($direction:column);
+
+        .buttons{
+display:inline-block;
+align-self: flex-end;
+        }
     }
 }

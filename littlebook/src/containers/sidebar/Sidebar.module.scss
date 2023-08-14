@@ -6,7 +6,7 @@
 .sidebar{
     @include flexbox($direction:column,$justify-content:space-between);
     @include flexbox-basis(15.5%);
-
+height: 100vh;
 padding: 45px 55px 70px;
 
     font-family: $main-font-family;

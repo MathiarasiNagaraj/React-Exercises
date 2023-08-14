@@ -4,18 +4,22 @@ import styles from './BlogsLayout.module.scss'
 import BlogArticle from '../../components/blogArticle/BlogArticle'
 import BlogSnippets from '../blogsnippets/BlogSnippets'
 import { getBlogs } from '../../services/data'
+import { useDispatch, useSelector } from 'react-redux'
+import { BlogAction } from '../../store/BlogSlice'
 
 const BlogsLayout = props => {
-  const [blogs, setBlogs] = useState([]);
-  useEffect(() => {
-    getBlogs().then((data)=>setBlogs(data))
-  }, []);
+
+
+
+  const blogs = useSelector(state => state.blog.blogs);
+  const selectedBlog=useSelector(state=>state.blog.selectedBlog)
+ 
 
 
   return (
     <div className={styles["blogs"]}>
     <BlogSnippets  blogs={blogs}/>
-      <BlogArticle blog={blogs.length>0&&blogs[0]}/>
+      <BlogArticle blog={selectedBlog}/>
     </div>
   )
 }

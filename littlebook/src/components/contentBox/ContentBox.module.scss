@@ -2,3 +2,25 @@
 @import '../../styles/colors';
 @import '../../styles/font-family';
 @import '../../styles/mixins';
+
+textarea{
+    border: none;
+    outline: none;
+    resize: none;
+    &::placeholder{
+        color:$support-darkgrey;
+    }
+}
+.newBlog-text-box{
+ 
+    font-family: $heading-font-family;
+    font-size: 15px;
+    height: 65vh;
+}
+.edit-blog-content{
+    font-family: $main-font-family;
+    line-height: 1.6;
+    font-size: 17px;
+    margin-bottom: 30px;
+    height: 300px;
+}

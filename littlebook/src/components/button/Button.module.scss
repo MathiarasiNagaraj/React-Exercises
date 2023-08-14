@@ -23,7 +23,8 @@ button{
     color:$lightTheme-primary;
     border-radius: 30px;
     font-size: 18px;
-
+align-self: flex-end;
+align-items: flex-end;
 }
 .sidebar-btn{
     font-size: 15px;
@@ -35,4 +36,13 @@ button{
     padding: 10px 30px;
     border-radius: 30px;
   align-self: flex-end;
+  margin-right: 10px;
+}
+.save-btn{
+    background-color: $support-purple;
+    color:$lightTheme-primary;
+    padding: 10px 30px;
+    border-radius: 30px;
+  align-self: flex-end;
+
 }
