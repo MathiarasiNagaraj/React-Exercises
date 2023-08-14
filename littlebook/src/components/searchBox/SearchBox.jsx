@@ -11,7 +11,6 @@ const SearchBox = props => {
   const searchRef = useRef();
   const dispatch = useDispatch();
   const onChangeHandler = (data) => {
-    console.log(data,"search");
     dispatch(BlogAction.search(data));
   }
   return (
