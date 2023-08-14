@@ -2,12 +2,22 @@
 @import '../../styles/font-family';
 @import '../../styles/mixins';
 
+
+
+.dark{
+    background-color: $darkTheme-primary;
+    color:$lightTheme-primary;
+  }
+  .light{
+    background-color: $lightTheme-primary;
+  }
+
 .blog-snippet{
     font-family: $main-font-family;
     box-shadow: rgba(0, 0, 0, 0.21) 0px 2px 5px;
     padding: 30px;
     border-radius: 12px;
-    background-color: $lightTheme-primary;
+  
 
     h1{
         font-family: $heading-font-family;

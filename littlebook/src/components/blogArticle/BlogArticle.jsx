@@ -9,11 +9,14 @@ const BlogArticle = props => {
   const{title,type,details,photo}=props.blog
   return (
     <div className={styles["blog-article"]}>
-      <ImageBox src={photo} alt={ title}  styleName="blog"/>
+      <ImageBox src={photo} alt={title} styleName="blog" />
+ 
       <h1>{title}</h1>
       <p>{details}</p>
       
       <Button name={ EDIT.name} styleName="edit-btn" />
+
+
     </div>
   )
 }

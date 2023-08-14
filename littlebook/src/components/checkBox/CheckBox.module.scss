@@ -4,6 +4,12 @@
 @import '../../styles/mixins';
 /* Checkbox.css */
 
+.dark{
+  background-color: $darkTheme-primary;
+}
+.light{
+  background-color: $lightTheme-primary;
+}
 .check-box{
     padding: 10px 0px;
 .checkbox-container {
@@ -25,7 +31,7 @@
   left: 0;
   height: 22px;
   width: 22px;
-  background-color: #eee; /* Checkbox background color */
+ /* Checkbox background color */
   border: 1px solid $support-purple; /* Checkbox border */
   border-radius: 3px;
 }
@@ -51,7 +57,7 @@
     top: 5.5px;
     width: 2px;
     height: 7px;
-    border: solid white;
+    border: solid $lightTheme-primary;
     border-width: 0px 1.5px 1.5px 0;
     transform: rotate(45deg);
 }

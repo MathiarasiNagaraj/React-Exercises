@@ -2,10 +2,11 @@
 @import '../../styles/font-family';
 @import '../../styles/mixins';
 
+
 .sidebar{
     @include flexbox($direction:column,$justify-content:space-between);
     @include flexbox-basis(15.5%);
-    background-color: $lightTheme-primary;
+
 padding: 45px 55px 70px;
 
     font-family: $main-font-family;
@@ -19,5 +20,10 @@ padding: 45px 55px 70px;
             font-weight: 300;
             color: $support-purple;
         }
+    }
+    h2{
+        font-size: 18px;
+        font-weight: 500; 
+        margin-bottom: 10px;
     }
 }

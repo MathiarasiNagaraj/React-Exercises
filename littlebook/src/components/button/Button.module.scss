@@ -6,7 +6,17 @@ button{
     border: none;
     cursor: pointer;
     font-family: $main-font-family;
+    background-color: $lightTheme-primary;
 }
+.dark{
+    background-color: $darkTheme-primary;
+    color:$lightTheme-primary;
+  }
+.light{
+    background-color: $lightTheme-primary;
+    color:$support-black;
+}
+
 .add-btn{
     background-color: $support-purple;
     padding: 15px 50px;
@@ -16,7 +26,6 @@ button{
 
 }
 .sidebar-btn{
-    background-color: $lightTheme-primary;
     font-size: 15px;
     margin-top: 10px;
 }

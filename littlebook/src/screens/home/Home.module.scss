@@ -1,7 +1,19 @@
 @import '../../styles/colors';
 @import '../../styles/font-family';
 @import '../../styles/mixins';
+
+.dark{
+    background-color: $darkTheme-primary;
+    color:$lightTheme-primary;
+
+}
+.light{
+    background-color: $lightTheme-primary;
+    color:$support-black;
+}
+
 .home{
     @include flexbox();
+   position: relative;
 
 }

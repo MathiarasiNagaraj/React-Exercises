@@ -5,10 +5,11 @@
 .blog{
     height: 438px;
     width: 755px;
-    img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 20px;
-    }
+    @include img(25px,25px,25px,25px);
+}
+.member-profile{
+height: 147px;
+width: 147px;
+@include img(15px,15px,15px,0px)
+
 }
