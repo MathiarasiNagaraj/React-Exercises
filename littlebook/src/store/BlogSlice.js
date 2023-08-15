@@ -18,8 +18,10 @@ const BlogSlice = createSlice({
       state.selectedBlog = state.blogs[0];
 
       state.blogs.map((blog) => {
-        if (!filtertypes.includes(blog.type)) {
-          filtertypes.push(blog.type);
+
+        const exist = filtertypes.some((item) => item.type === blog.type)
+        if (!exist) {
+          filtertypes.push({ type:blog.type,isChecked:true });
         }
       });
       state.filterType = filtertypes;
@@ -27,13 +29,32 @@ const BlogSlice = createSlice({
     add(state, action) {
       const newBlog = action.payload;
       state.blogs.push(newBlog);
-
-      if (!state.filterType.includes(newBlog.type)) {
-        state.filterType.push(newBlog.type);
+      const exist = state.filterType.some((item) => item.type === newBlog.type)
+      if (!exist) {
+        state.filterType.push({ type:newBlog.type,isChecked:true });
       }
+      state.AllBlogs.push(newBlog);
+   
     },
     edit(state, action) {},
-    filter(state, action) {},
+    filter(state, action) {
+      const filteredBlogs = [];
+      const { type, isChecked } = action.payload;
+      console.log(type, isChecked);
+      state.filterType.forEach((item) => {
+        if (item.type === type)
+          item.isChecked = isChecked;
+      }
+      )
+      const initialState = state.AllBlogs;
+      initialState.forEach(blog => {
+        const exist = state.filterType.some((item) => item.type === blog.type && item.isChecked === true)
+        if (exist)
+          filteredBlogs.push(blog)
+        
+      })
+      state.blogs = filteredBlogs;
+    },
     search(state, action) {
       const searchFilteredBlogs = [];
       const initialState = state.AllBlogs;

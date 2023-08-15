@@ -27,7 +27,7 @@ const Sidebar = props => {
 
   }
 
-  const filters = filterType?.map((type) => <CheckBox label={ type} />)
+  const filters = filterType?.map((item) => <CheckBox label={item.type} isChecked={ item.isChecked} />)
 
   return (
     <div className={styles["sidebar"]}>
