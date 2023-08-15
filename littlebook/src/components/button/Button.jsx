@@ -6,8 +6,10 @@ import { useSelector } from 'react-redux'
 const Button = props => {
   const { name, styleName, onClick } = props
   const theme = useSelector(state => state.theme.mode);
+ 
+  
   return (
-    <button className={`${styles[styleName]} ${styles[theme]}`} onClick={()=>onClick()}>{ name}</button>
+    <button className={`${styles[styleName]} ${styles[theme]}`} onClick={onClick}>{ name}</button>
   )
 }
 

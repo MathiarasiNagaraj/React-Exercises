@@ -3,9 +3,14 @@ import PropTypes from 'prop-types'
 import styles from './ContentBox.module.scss';
 
 const ContentBox = forwardRef((props,ref) => {
-    const {placeHolder,styleName,value,onChange}=props
+  const { placeHolder, styleName, value, onChange } = props
+  const onChangeHandler = (e) => {
+    onChange(e.target.value);
+   // console.log("calling ", e.target.value)
+  }
   return (
-      <textarea placeholder={placeHolder} ref={ref} className={styles[styleName]} value={value} onChange={()=> onChange(ref.current.value)} >
+    <textarea placeholder={placeHolder} ref={ref} className={styles[styleName]} value={value} onChange={onChangeHandler
+    } >
           
 </textarea>
   )

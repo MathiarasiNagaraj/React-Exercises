@@ -9,34 +9,63 @@ const BlogSlice = createSlice({
     filterType: [],
     isEditMode: false,
     selectedBlog: {},
+    validation: {}
   },
   reducers: {
     store(state, action) {
       const filtertypes = [];
-      state.blogs = action.payload;
-      state.AllBlogs = action.payload;
+      let blogs = action.payload;
+      blogs = blogs.map((obj, index) => ({
+        ...obj,
+        id: index + 1,
+      }));
+      state.blogs = blogs
+      state.AllBlogs = blogs;
       state.selectedBlog = state.blogs[0];
 
       state.blogs.map((blog) => {
 
         const exist = filtertypes.some((item) => item.type === blog.type)
         if (!exist) {
-          filtertypes.push({ type:blog.type,isChecked:true });
+          filtertypes.push({ type: blog.type, isChecked: true });
         }
       });
       state.filterType = filtertypes;
     },
     add(state, action) {
-      const newBlog = action.payload;
+      let newBlog = action.payload;
+     newBlog= { ...newBlog ,id:state.AllBlogs.length+1};
       state.blogs.push(newBlog);
       const exist = state.filterType.some((item) => item.type === newBlog.type)
       if (!exist) {
-        state.filterType.push({ type:newBlog.type,isChecked:true });
+        state.filterType.push({ type: newBlog.type, isChecked: true });
       }
       state.AllBlogs.push(newBlog);
-   
+   console.log(state.AllBlogs.length)
     },
-    edit(state, action) {},
+    edit(state, action) {
+      const { id, title, details } = action.payload;
+      console.log(action.payload);
+      let initialState = state.AllBlogs;
+      initialState=  initialState.map(blog => {
+        if (blog.id === id) {
+          console.log(blog.id);
+          return {
+            ...blog,
+            title: title,
+            details: details
+
+        
+          }
+        
+        }
+        return blog;
+      });
+ state.selectedBlog=initialState.find((blog)=>blog.id==id);
+      state.blogs = initialState;
+      state.AllBlogs = initialState;
+
+    },
     filter(state, action) {
       const filteredBlogs = [];
       const { type, isChecked } = action.payload;
@@ -54,6 +83,11 @@ const BlogSlice = createSlice({
         
       })
       state.blogs = filteredBlogs;
+    },
+    validate(state, action) {
+      const { title, details } = action.payload;
+     
+
     },
     search(state, action) {
       const searchFilteredBlogs = [];
