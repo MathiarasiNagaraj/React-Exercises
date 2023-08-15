@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import styles from './BlogArticle.module.scss'
 import ImageBox from '../imageBox/ImageBox'
@@ -12,22 +12,26 @@ import { BlogAction } from '../../store/BlogSlice'
 const BlogArticle = props => {
   const { title, type, details, photo } = props.blog;
   const isEdit = useSelector(state => state.blog.isEditMode);
+  const [isEditMode, setisEditMode] = useState(false);
+  useEffect(() => {
+    setisEditMode(false)
+  },[props])
   const onChangleHandler = () => {
     
   }
-  const dispatch = useDispatch();
-  const onEditHandler = () => {
-    dispatch(BlogAction.toggleEdit());
+  const onEditHandler= () => {
+    
   }
+
   return (
     <div className={styles["blog-article"]}>
-      <ImageBox src={photo} alt={title} styleName="blog" />
-      {!isEdit ?
+      <ImageBox src={photo} alt={title} styleName="blog"  />
+      {!isEditMode ?
         <>
       <h1>{title}</h1>
       <p>{details}</p>
       
-          <Button name={EDIT.name} styleName="edit-btn" onClick={onEditHandler} />
+          <Button name={EDIT.name} styleName="edit-btn" onClick={()=>setisEditMode(true)} />
           </>
         :
         <form className={styles["edit-form"]}>
@@ -42,6 +46,7 @@ const BlogArticle = props => {
     </div>
   )
 }
+
 
 BlogArticle.propTypes = {}
 
