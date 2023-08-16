@@ -6,3 +6,7 @@ export const SEARCHBOX = {
 export const DEFAULT_IMAGE = {
     url:'/images/default-blog.png'
 }
+
+export const WARNING = {
+    message:"Are you sure,want to Exit ?"
+}

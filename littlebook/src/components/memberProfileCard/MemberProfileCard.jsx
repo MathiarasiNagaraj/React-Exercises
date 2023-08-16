@@ -15,6 +15,12 @@ const MemberProfileCard = props => {
   )
 }
 
-MemberProfileCard.propTypes = {}
+MemberProfileCard.propTypes = {
+  data: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+    photo: PropTypes.string
+  })
+}
 
 export default MemberProfileCard

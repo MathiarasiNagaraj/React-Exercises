@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 const ContentBox = props => {
   const { placeHolder, styleName, value, onChange } = props
   const theme = useSelector(state => state.theme.mode);
+  //on Changing pass data to parent component
   const onChangeHandler = (e) => {
     onChange(e.target.value);
   }

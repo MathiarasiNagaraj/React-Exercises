@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import InputBox from '../inputBox/InputBox'
 import { SEARCHBOX } from '../../constants/GeneralConstant'
@@ -8,13 +8,14 @@ import { BlogAction } from '../../store/BlogSlice'
 
 const SearchBox = props => {
  
-  const searchRef = useRef();
+
   const dispatch = useDispatch();
+  //on changing data triggring search function
   const onChangeHandler = (data) => {
     dispatch(BlogAction.search(data));
   }
   return (
-    <InputBox styleName="search-box" placeHolder={SEARCHBOX.placeHolder} ref={searchRef} onChange={onChangeHandler} />
+    <InputBox styleName="search-box" placeHolder={SEARCHBOX.placeHolder}  onChange={onChangeHandler} />
   )
 }
 

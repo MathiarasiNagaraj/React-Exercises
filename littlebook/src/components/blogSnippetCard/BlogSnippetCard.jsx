@@ -11,6 +11,7 @@ const BlogSnippetCard = props => {
   const{type,title,details}=content
   const theme = useSelector(state => state.theme.mode);
   const selected = useSelector(state => state.blog.selectedBlog);
+  //to  add style for selected card
   const isSelected = selected.title === content.title;
 
   return (
@@ -28,8 +29,8 @@ BlogSnippetCard.propTypes = {
     details: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     
-}).isRequired
-
+}).isRequired,
+onClick:PropTypes.func.isRequired
 }
 
 export default BlogSnippetCard

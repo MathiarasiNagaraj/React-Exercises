@@ -13,6 +13,10 @@ const Button = props => {
   )
 }
 
-Button.propTypes = {}
+Button.propTypes = {
+  name: PropTypes.string.isRequired,
+  styleName: PropTypes.string.isRequired,
+  onClick:PropTypes.func
+}
 
 export default Button

@@ -8,38 +8,23 @@ import { useDispatch, useSelector } from 'react-redux'
 import { BlogAction } from '../../store/BlogSlice'
 import { ModalAction } from '../../store/ModalSlice'
 import { Bars } from "react-loader-spinner";
-const BlogsLayout = props => {
+const BlogsLayout = () => {
 
 
 
-  const blogs = useSelector(state => state.blog.blogs);
-  const selectedBlog = useSelector(state => state.blog.selectedBlog)
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    if (blogs.length > 0) {
-      setLoading(false);
-  }
-  },[blogs])
+
+
  
 
   return (
     <div className={styles["blogs"]}>
-      {loading ?
-        <div className={styles["loader"]}>
-        <Bars
-
-          color="#b355b7"
-          ariaLabel="bars-loading"
-          visible={true}
-        />{" "}
-      </div>
-      :
-        <BlogSnippets blogs={blogs} />}
-      <BlogArticle blog={selectedBlog}/>
+  
+        <BlogSnippets/>
+      <BlogArticle/>
     </div>
   )
 }
 
-BlogsLayout.propTypes = {}
+
 
 export default BlogsLayout

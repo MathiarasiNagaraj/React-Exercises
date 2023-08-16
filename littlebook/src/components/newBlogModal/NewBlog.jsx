@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./NewBlog.module.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,28 +10,23 @@ import Button from "../button/Button";
 import { ADD } from "../../constants/ButtonConstant";
 import { BlogAction } from "../../store/BlogSlice";
 
-const NewBlog = (props) => {
-  const initialState = {
-    isValid: true,
-    message: "",
-  };
+const NewBlog = () => {
   const theme = useSelector((state) => state.theme.mode);
-
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const allBlogs = useSelector((state) => state.blog.AllBlogs);
   const dispatch = useDispatch();
 
-
-
+  //setting content on input changing
   const onContentChangeHandler = (data) => {
     setContent(data);
   };
+ //setting title on input changing
   const onTitleChangeHandler = (data) => {
     setTitle(data);
   };
+  //warning on clicking outside of form
   const onModalCloseHandler = () => {
-   
     const data = {
       message: "Willing to Exit ?",
       type:"add"
@@ -39,6 +34,7 @@ const NewBlog = (props) => {
     dispatch(ModalAction.showWarningModal(data))
   };
 
+  //form handler for adding new blog
   const onAddNewBlogFormHandler = async (e) => {
     e.preventDefault();
     const validation = {
@@ -50,6 +46,9 @@ const NewBlog = (props) => {
       details: content,
       type: "local",
     };
+    //validating form 
+    //content should have more than 10 words
+    //title should not reapting
     const contentWordsCount = content.split(" ").length;
     const exist = allBlogs.some((blog) => blog.title === title);
    
@@ -60,7 +59,7 @@ const NewBlog = (props) => {
       validation.isValid = false;
       validation.message = "Title already exists";
     }
-
+//if not valid pop warning modal else store new data
     if (!validation.isValid) {
       let data = {
         message: validation.message,
@@ -101,6 +100,6 @@ const NewBlog = (props) => {
   );
 };
 
-NewBlog.propTypes = {};
+
 
 export default NewBlog;
