@@ -1,0 +1,42 @@
+$black: #151515;
+$white: #ffffff;
+$yellow: #f5a522;
+.loader {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: $black;
+  color: $white;
+  align-items: center;
+}
+.all-movie {
+  display: flex;
+  justify-content: space-between;
+  background-color: $black;
+  color: $white;
+  padding: 60px 80px 140px;
+}
+.movies {
+  width: 47%;
+
+  h1 {
+    font-size: 42px;
+    font-weight: 400;
+  }
+}
+
+.movie-container {
+  margin-top: 40px;
+  margin-bottom: 50px;
+  height: 75vh;
+  justify-content: space-between;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  row-gap: 39px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

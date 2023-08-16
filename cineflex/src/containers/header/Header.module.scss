@@ -1,0 +1,30 @@
+$black: #000000;
+$white: #ffffff;
+$blue:#4b8fe2;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 45px;
+  background-color: $black;
+  color: $white;
+  .logo {
+    img {
+      height: 33px;
+      object-fit: cover;
+    }
+  }
+  .user 
+  {
+    font-size: 23px;
+    a{
+    font-size: 23px;
+text-decoration: none;
+color: $white;
+    }
+
+    .active{
+      color:$blue;
+    }
+  }
+}

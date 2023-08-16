@@ -1,0 +1,29 @@
+$light-grey: #d6d6d6;
+$white: #ffffff;
+input{
+    border: none;
+    outline: none;
+}
+.lottery-input {
+  width: 400px;
+  padding: 21px 25px;
+  font-weight: 500;
+  font-size: 15px;
+  
+
+  ::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: $light-grey;
+  }
+}
+.login-input {
+  width: 360px;
+  padding-top: 15px;
+  font-weight: 500;
+  font-size: 16px;
+  background-color: inherit;
+  color: $white;
+  border-bottom: 1px solid  #808182;;
+  margin-bottom: 30px;
+  padding-bottom: 3px;
+}

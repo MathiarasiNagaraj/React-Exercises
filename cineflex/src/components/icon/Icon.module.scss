@@ -1,0 +1,13 @@
+$blue:#417abf;
+$textBlue:#488ddf;
+.icon{
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid $blue;
+    padding: 10px 20px;
+    color:$textBlue;
+    font-size: 30px;
+    font-weight: 900;
+    margin: auto 0;
+    cursor: pointer;
+}
