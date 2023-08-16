@@ -28,7 +28,7 @@ const BlogsLayout = props => {
         <div className={styles["loader"]}>
         <Bars
 
-          color="#ffffff"
+          color="#b355b7"
           ariaLabel="bars-loading"
           visible={true}
         />{" "}

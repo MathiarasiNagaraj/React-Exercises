@@ -17,3 +17,13 @@
    position: relative;
 
 }
+.loader {
+
+    height: 100vh;
+    width: 100%;
+    @include flexbox($justify-content:center);
+   
+    align-items: center;
+    @include flexbox-basis($basis:100%);
+    flex-grow: 1;
+  }
