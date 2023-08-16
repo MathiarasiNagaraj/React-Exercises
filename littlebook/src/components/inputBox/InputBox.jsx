@@ -8,7 +8,7 @@ const InputBox = forwardRef((props, ref) => {
   const theme = useSelector(state => state.theme.mode);
   const onChangeHandler = (e) => {
     onChange(e.target.value);
-   // console.log("calling ", e.target.value)
+
   }
   return (
     <input type="text" ref={ref} placeholder={placeHolder} className= {`${styles[styleName]}  ${styles[theme]}`} value={value} onChange={onChangeHandler} />

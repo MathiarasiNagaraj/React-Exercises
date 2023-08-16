@@ -40,15 +40,15 @@ const BlogSlice = createSlice({
         state.filterType.push({ type: newBlog.type, isChecked: true });
       }
       state.AllBlogs.push(newBlog);
-      console.log(state.AllBlogs.length);
+ 
     },
     edit(state, action) {
       const { id, title, details } = action.payload;
-      console.log(action.payload);
+
       let initialState = state.AllBlogs;
       initialState = initialState.map((blog) => {
         if (blog.id === id) {
-          console.log(blog.id);
+
           return {
             ...blog,
             title: title,
@@ -64,7 +64,7 @@ const BlogSlice = createSlice({
     filter(state, action) {
       const filteredBlogs = [];
       const { type, isChecked } = action.payload;
-      console.log(type, isChecked);
+
       state.filterType.forEach((item) => {
         if (item.type === type) item.isChecked = isChecked;
       });

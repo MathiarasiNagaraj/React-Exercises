@@ -30,7 +30,7 @@ const Home = props => {
   const showWarningModal = useSelector(state => state.modal.isshowWarningModal);
 
   
-console.log(showWarningModal,"home")
+
 
   return (
 

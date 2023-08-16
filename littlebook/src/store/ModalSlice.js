@@ -33,7 +33,7 @@ const ModalSlice = createSlice({
     closeWarningModal(state) {
       state.warningMessage = "";
         state.isshowWarningModal = false;
-        console.log("hgk",state.isshowWarningModal)
+
     },
   },
 });

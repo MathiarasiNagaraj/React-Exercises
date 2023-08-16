@@ -19,16 +19,16 @@ const PopUpModal = props => {
             dispatch(ModalAction.hideAddNewBlogModal());
         }
         else if (warningType === "edit") {
-            console.log("dsdf")
+     
             dispatch(ModalAction.closeWarningModal());
-            console.log(mode);
+
             dispatch(BlogAction.setEditMode(false));
         }
     }
     const onClosePopModalHandler = () => {
-        console.log("closing..")
+
         dispatch(ModalAction.closeWarningModal());
-        console.log(mode);
+
 
 }
   return (

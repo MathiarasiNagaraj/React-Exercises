@@ -60,7 +60,7 @@ const NewBlog = (props) => {
       validation.isValid = false;
       validation.message = "Title already exists";
     }
-    console.log(validation.isValid);
+
     if (!validation.isValid) {
       let data = {
         message: validation.message,
