@@ -68,7 +68,7 @@ const ShortTeaser = (props) => {
   //when adNotification time or adtime changes
   useEffect(() => {
     if (isStarted) {
-      let Adinteravel, resumeInteravel;
+      let Adinterval, resumeinterval;
 
       //if the (current)adNotfication  is less than total AD-notification length increase the current time by 1 for every second
       if (
@@ -77,7 +77,7 @@ const ShortTeaser = (props) => {
       ) {
         //only on start of video start the counter (call the hoc method)
   
-        Adinteravel = setInterval(() => {
+        Adinterval = setInterval(() => {
           showAdNotification(
             Math.floor(videoRef.current?.currentTime),
             ADVERTISEMENT_NOTIFICATION.totalTime
@@ -89,7 +89,7 @@ const ShortTeaser = (props) => {
       //increase the adtime by 1 for every second until current adremaining time is less than total ad duration
       //hide the video
       else if (adRemainingTime >= 1) {
-        resumeInteravel = setInterval(() => {
+        resumeinterval = setInterval(() => {
           showAd(adRemainingTime);
 
           //setAdTime((prev) => prev + 1);
@@ -104,8 +104,8 @@ const ShortTeaser = (props) => {
       }
       //on returning clear the interval
       return () => {
-        clearInterval(Adinteravel);
-        clearInterval(resumeInteravel);
+        clearInterval(Adinterval);
+        clearInterval(resumeinterval);
       };
     }
   }, [adNotificationRemainingTime, adRemainingTime, isStarted]);
