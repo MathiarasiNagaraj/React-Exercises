@@ -1,0 +1,48 @@
+@import '../../styles/colors';
+@import '../../styles/font-family';
+@import '../../styles/mixins';
+
+button{
+    border: none;
+    cursor: pointer;
+    font-family: $main-font-family;
+    background-color: $lightTheme-primary;
+}
+.dark{
+    background-color: $darkTheme-primary;
+    color:$lightTheme-primary;
+  }
+.light{
+    background-color: $lightTheme-primary;
+    color:$support-black;
+}
+
+.add-btn{
+    background-color: $support-purple;
+    padding: 15px 50px;
+    color:$lightTheme-primary;
+    border-radius: 30px;
+    font-size: 18px;
+align-self: flex-end;
+align-items: flex-end;
+}
+.sidebar-btn{
+    font-size: 15px;
+    margin-top: 10px;
+}
+.edit-btn{
+    background-color: $support-lightblue;
+    color:$support-black;
+    padding: 10px 30px;
+    border-radius: 30px;
+  align-self: flex-end;
+  margin-right: 10px;
+}
+.save-btn{
+    background-color: $support-purple;
+    color:$lightTheme-primary;
+    padding: 10px 30px;
+    border-radius: 30px;
+  align-self: flex-end;
+
+}
