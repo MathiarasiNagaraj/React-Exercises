@@ -6,19 +6,20 @@ import BlogSnippets from '../blogsnippets/BlogSnippets'
 import { getBlogs } from '../../services/data'
 import { useDispatch, useSelector } from 'react-redux'
 import { BlogAction } from '../../store/BlogSlice'
+import { ModalAction } from '../../store/ModalSlice'
 
 const BlogsLayout = props => {
 
 
 
   const blogs = useSelector(state => state.blog.blogs);
-  const selectedBlog=useSelector(state=>state.blog.selectedBlog)
- 
+  const selectedBlog = useSelector(state => state.blog.selectedBlog)
+  
 
 
   return (
     <div className={styles["blogs"]}>
-    <BlogSnippets  blogs={blogs}/>
+      <BlogSnippets blogs={blogs} />
       <BlogArticle blog={selectedBlog}/>
     </div>
   )

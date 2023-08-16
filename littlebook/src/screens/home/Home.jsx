@@ -10,6 +10,7 @@ import { ModalAction } from '../../store/ModalSlice'
 import { getBlogs, getUsers } from '../../services/data'
 import NewBlog from '../../components/newBlogModal/NewBlog'
 import { BlogAction } from '../../store/BlogSlice'
+import PopUpModal from '../../components/popUpModal/PopUpModal'
 const Home = props => {
 
 
@@ -26,20 +27,20 @@ const Home = props => {
   const theme = useSelector(state => state.theme.mode);
   const showMemberModal = useSelector(state => state.modal.isshowMemberModal);
   const showAddNewBlogModal = useSelector(state => state.modal.isaddNewBlogModal);
+  const showWarningModal = useSelector(state => state.modal.isshowWarningModal);
 
   
-  const onClickHandler = () => {
-  //  dispatch(ModalAction.hideMemberModal());
-  }
+console.log(showWarningModal,"home")
 
   return (
 
-    <div className= {`${styles["home"]} ${styles[theme]}`} onClick={onClickHandler}>
+    <div className= {`${styles["home"]} ${styles[theme]}`} >
 
           <Sidebar />
       <BlogsLayout />
       {showMemberModal && <MembersModal members={users} />}
-      {showAddNewBlogModal && <NewBlog/>}
+      {showAddNewBlogModal && <NewBlog />}
+      {showWarningModal&& <PopUpModal/>}
         </div>
           
 

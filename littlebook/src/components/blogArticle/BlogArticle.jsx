@@ -11,16 +11,12 @@ import { BlogAction } from '../../store/BlogSlice'
 
 const BlogArticle = props => {
   const { title, type, details, photo ,id} = props.blog;
-  const isEdit = useSelector(state => state.blog.isEditMode);
-  const [isEditMode, setisEditMode] = useState(false);
   const [EditTitle, setTitle] = useState(title);
   const [EditContent, setContent] = useState(details);
-  const validation = useSelector(state => state.blog.validation);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    setisEditMode(false)
+  const editMode=useSelector(state=>state.blog.isEditMode)
 
-  },[props])
+  const dispatch = useDispatch();
+ 
   const onTitleChangleHandler = (value) => {
     setTitle(value);
     
@@ -40,7 +36,9 @@ const BlogArticle = props => {
       id:id
     }
     dispatch(BlogAction.edit(editedBlog));
-    setisEditMode(false);
+    dispatch(BlogAction.setEditMode(false))
+
+
     
 
     
@@ -48,13 +46,14 @@ const BlogArticle = props => {
   const changeEditMode = () => {
     setTitle(title);
     setContent(details);
-    setisEditMode(true);
+    dispatch(BlogAction.setEditMode(true));
+
   }
 
   return (
     <div className={styles["blog-article"]}>
       <ImageBox src={photo} alt={title} styleName="blog"  />
-      {!isEditMode ?
+      {!editMode ?
         <>
       <h1>{title}</h1>
       <p>{details}</p>

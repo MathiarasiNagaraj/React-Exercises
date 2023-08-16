@@ -25,3 +25,8 @@ export const DARK_MODE = {
 export const LIGHT_MODE = {
     name:"Switch to Light Mode"
 }
+export const WARNING = {
+    exit: "Exit",
+    cancel: "Cancel",
+    okay :"Okay"
+}

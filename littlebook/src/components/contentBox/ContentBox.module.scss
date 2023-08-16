@@ -3,13 +3,25 @@
 @import '../../styles/font-family';
 @import '../../styles/mixins';
 
+.dark{
+    background-color: $support-black;
+    color: $lightTheme-primary;
+    &::placeholder{
+        color:$support-darkgrey;
+    }
+}
+.light{
+    background-color: $lightTheme-primary;
+    &::placeholder{
+        color:$support-darkgrey;
+    }
+
+}
 textarea{
     border: none;
     outline: none;
     resize: none;
-    &::placeholder{
-        color:$support-darkgrey;
-    }
+  
 }
 .newBlog-text-box{
  
@@ -23,4 +35,8 @@ textarea{
     font-size: 17px;
     margin-bottom: 30px;
     height: 300px;
+}
+.edit-blog-content.dark{
+    background-color: $darkTheme-primary;
+    color: $lightTheme-primary;
 }

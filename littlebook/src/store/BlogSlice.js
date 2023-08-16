@@ -9,7 +9,7 @@ const BlogSlice = createSlice({
     filterType: [],
     isEditMode: false,
     selectedBlog: {},
-    validation: {}
+  
   },
   reducers: {
     store(state, action) {
@@ -19,13 +19,12 @@ const BlogSlice = createSlice({
         ...obj,
         id: index + 1,
       }));
-      state.blogs = blogs
+      state.blogs = blogs;
       state.AllBlogs = blogs;
       state.selectedBlog = state.blogs[0];
 
       state.blogs.map((blog) => {
-
-        const exist = filtertypes.some((item) => item.type === blog.type)
+        const exist = filtertypes.some((item) => item.type === blog.type);
         if (!exist) {
           filtertypes.push({ type: blog.type, isChecked: true });
         }
@@ -34,61 +33,51 @@ const BlogSlice = createSlice({
     },
     add(state, action) {
       let newBlog = action.payload;
-     newBlog= { ...newBlog ,id:state.AllBlogs.length+1};
+      newBlog = { ...newBlog, id: state.AllBlogs.length + 1 };
       state.blogs.push(newBlog);
-      const exist = state.filterType.some((item) => item.type === newBlog.type)
+      const exist = state.filterType.some((item) => item.type === newBlog.type);
       if (!exist) {
         state.filterType.push({ type: newBlog.type, isChecked: true });
       }
       state.AllBlogs.push(newBlog);
-   console.log(state.AllBlogs.length)
+      console.log(state.AllBlogs.length);
     },
     edit(state, action) {
       const { id, title, details } = action.payload;
       console.log(action.payload);
       let initialState = state.AllBlogs;
-      initialState=  initialState.map(blog => {
+      initialState = initialState.map((blog) => {
         if (blog.id === id) {
           console.log(blog.id);
           return {
             ...blog,
             title: title,
-            details: details
-
-        
-          }
-        
+            details: details,
+          };
         }
         return blog;
       });
- state.selectedBlog=initialState.find((blog)=>blog.id==id);
+      state.selectedBlog = initialState.find((blog) => blog.id == id);
       state.blogs = initialState;
       state.AllBlogs = initialState;
-
     },
     filter(state, action) {
       const filteredBlogs = [];
       const { type, isChecked } = action.payload;
       console.log(type, isChecked);
       state.filterType.forEach((item) => {
-        if (item.type === type)
-          item.isChecked = isChecked;
-      }
-      )
+        if (item.type === type) item.isChecked = isChecked;
+      });
       const initialState = state.AllBlogs;
-      initialState.forEach(blog => {
-        const exist = state.filterType.some((item) => item.type === blog.type && item.isChecked === true)
-        if (exist)
-          filteredBlogs.push(blog)
-        
-      })
+      initialState.forEach((blog) => {
+        const exist = state.filterType.some(
+          (item) => item.type === blog.type && item.isChecked === true
+        );
+        if (exist) filteredBlogs.push(blog);
+      });
       state.blogs = filteredBlogs;
     },
-    validate(state, action) {
-      const { title, details } = action.payload;
-     
-
-    },
+    
     search(state, action) {
       const searchFilteredBlogs = [];
       const initialState = state.AllBlogs;
@@ -103,10 +92,11 @@ const BlogSlice = createSlice({
         }
       });
 
-      state.blogs =  searchFilteredBlogs;
+      state.blogs = searchFilteredBlogs;
     },
-    toggleEdit(state) {
-      state.isEditMode = !state.isEditMode;
+
+    setEditMode(state, action) {
+      state.isEditMode = action.payload;
     },
     changeSelectedBlog(state, action) {
       state.selectedBlog = action.payload;

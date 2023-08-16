@@ -11,6 +11,7 @@ import { BlogAction } from '../../store/BlogSlice'
 
 const BlogSnippets = props => {
     const { blogs } = props
+    const isEdit = useSelector(state => state.blog.isEditMode);
     
     const onBlogSelectHandler = (data) => {
        dispatch(BlogAction.changeSelectedBlog(data))
@@ -21,9 +22,18 @@ const BlogSnippets = props => {
     const onAddNewBlogHandler = () => {
     dispatch(ModalAction.showAddNewBlogModal())
     }
-
+    const onMouseOverHandler = () => {
+        if (isEdit) {
+            const data = {
+                message: "Willing to Exit ?",
+                type: "edit"
+            }
+            
+            dispatch(ModalAction.showWarningModal(data))
+        }
+    }
   return (
-      <div className={`${styles["blog-snippets"]} ${styles[theme]}`}>
+      <div className={`${styles["blog-snippets"]} ${styles[theme]}`} onMouseEnter={onMouseOverHandler}>
           <div className={styles["blog-search"]}>
               <SearchBox />
               <Button name={NEW.name} styleName="add-btn" onClick={ onAddNewBlogHandler} />

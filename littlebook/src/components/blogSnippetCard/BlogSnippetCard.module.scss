@@ -5,7 +5,7 @@
 
 
 .dark{
-    background-color: $darkTheme-primary;
+    background-color: $darkTheme-secondary;
     color:$lightTheme-primary;
   }
   .light{
@@ -13,6 +13,9 @@
   }
 .selected{
     background-color: $support-blue;
+}
+.selected.dark{
+    background-color: $support-darkgreen;
 }
 .blog-snippet{
     font-family: $main-font-family;
