@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ThemeAction } from "../../store/ThemeSlice";
 import { ModalAction } from "../../store/ModalSlice";
 
-const Sidebar = (props) => {
+const Sidebar = () => {
   const dispatch = useDispatch();
 
   const theme = useSelector((state) => state.theme.mode);
@@ -25,6 +25,7 @@ const Sidebar = (props) => {
   const onToggleModeHandler = () => {
     dispatch(ThemeAction.toggle());
   };
+  
   const onViewMemberHandler = () => {
     dispatch(ModalAction.showMemberModal());
   };
@@ -57,6 +58,6 @@ const Sidebar = (props) => {
   );
 };
 
-Sidebar.propTypes = {};
+
 
 export default Sidebar;

@@ -12,24 +12,31 @@ import NewBlog from '../../components/newBlogModal/NewBlog'
 import { BlogAction } from '../../store/BlogSlice'
 import PopUpModal from '../../components/popUpModal/PopUpModal'
 import { Bars } from "react-loader-spinner";
-const Home = props => {
+
+
+const Home = () => {
 
 
   const dispatch = useDispatch();
+  //fetching blog data
   useEffect(() => {
     getBlogs().then((data) => dispatch(BlogAction.store(data)))
   }, []);
-  
+  //fetching member data
   const [users, setUsers] = useState([]);
   useEffect(() => {
     getUsers().then((data) => setUsers(data))
   }, []);
 
   const theme = useSelector(state => state.theme.mode);
+  //pop up modals
+
   const showMemberModal = useSelector(state => state.modal.isshowMemberModal);
   const showAddNewBlogModal = useSelector(state => state.modal.isaddNewBlogModal);
   const showWarningModal = useSelector(state => state.modal.isshowWarningModal);
+  //loader
   const [loading, setLoading] = useState(true);
+
   const blogs = useSelector(state => state.blog.blogs);
   useEffect(() => {
     if (blogs.length > 0) {
@@ -64,7 +71,5 @@ const Home = props => {
 
   )
 }
-
-Home.propTypes = {}
 
 export default Home
