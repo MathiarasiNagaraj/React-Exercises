@@ -6,3 +6,12 @@
 @include flexbox();
 @include flexbox-basis($basis:84.5%);
 }
+.loader {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: $support-black;
+    color: $lightTheme-primary;
+    align-items: center;
+  }
