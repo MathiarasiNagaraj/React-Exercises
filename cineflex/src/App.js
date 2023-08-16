@@ -32,7 +32,7 @@ function App() {
           <Route
             path={ROUTES.SHOWTIME.path}
             element={
-              <Protected isLoggedIn={islogged} redirection={ROUTES.SHOWTIME.redirectionURL}>
+              <Protected isLoggedIn={islogged} redirectionURL={ROUTES.SHOWTIME.redirectionURL}>
             <Suspense fallback={<Fallback />}>
               <LazyNowShowing/>
             </Suspense>
