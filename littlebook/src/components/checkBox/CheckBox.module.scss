@@ -1,0 +1,65 @@
+
+@import '../../styles/colors';
+@import '../../styles/font-family';
+@import '../../styles/mixins';
+/* Checkbox.css */
+
+.dark{
+  background-color: $darkTheme-primary;
+}
+.light{
+  background-color: $lightTheme-primary;
+}
+.check-box{
+    padding: 10px 0px;
+.checkbox-container {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px; /* Adjust spacing between checkbox and label */
+  cursor: pointer;
+  font-size: 14.2px;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 22px;
+  width: 22px;
+ /* Checkbox background color */
+  border: 1px solid $support-purple; /* Checkbox border */
+  border-radius: 3px;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: $support-purple; /* Checked checkbox background color */
+  border-color: $support-purple; /* Checked checkbox border color */
+}
+
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Custom checkmark icon (can be a tick symbol, for example) */
+.checkmark:after {
+    left: 8px;
+    top: 5.5px;
+    width: 2px;
+    height: 7px;
+    border: solid $lightTheme-primary;
+    border-width: 0px 1.5px 1.5px 0;
+    transform: rotate(45deg);
+}
+}

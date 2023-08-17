@@ -1,0 +1,19 @@
+@import '../../styles/colors';
+@import '../../styles/font-family';
+@import '../../styles/mixins';
+
+.member-card{
+    @include flexbox-basis(28%);
+    font-family: $main-font-family;
+    .member-name{
+
+        margin-top: 7px;
+        font-size: 15px;
+        color:$support-purple;
+        font-weight: 400;
+    }
+    p{
+        font-size: 14px;
+
+    }
+}

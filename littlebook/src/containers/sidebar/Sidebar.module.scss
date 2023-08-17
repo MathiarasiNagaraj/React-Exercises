@@ -1,0 +1,38 @@
+@import '../../styles/colors';
+@import '../../styles/font-family';
+@import '../../styles/mixins';
+
+.dark{
+    span{
+        color:$lightTheme-primary;
+    }
+}
+.light{
+    span{
+        color:$support-purple;
+    }
+}
+
+.sidebar{
+    @include flexbox($direction:column,$justify-content:space-between);
+    @include flexbox-basis(15.5%);
+height: 100vh;
+padding: 45px 55px 70px;
+
+    font-family: $main-font-family;
+
+    h1{
+        font-family: $heading-font-family;
+        font-weight: 500;
+        font-size: 26px;
+        cursor: pointer;
+        span{
+            font-weight: 300;
+        }
+    }
+    h2{
+        font-size: 18px;
+        font-weight: 500; 
+        margin-bottom: 10px;
+    }
+}

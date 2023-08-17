@@ -1,0 +1,42 @@
+
+@import '../../styles/colors';
+@import '../../styles/font-family';
+@import '../../styles/mixins';
+
+.dark{
+    background-color: $support-black;
+    color: $lightTheme-primary;
+    &::placeholder{
+        color:$support-darkgrey;
+    }
+}
+.light{
+    background-color: $lightTheme-primary;
+    &::placeholder{
+        color:$support-darkgrey;
+    }
+
+}
+textarea{
+    border: none;
+    outline: none;
+    resize: none;
+  
+}
+.newBlog-text-box{
+ 
+    font-family: $heading-font-family;
+    font-size: 15px;
+    height: 65vh;
+}
+.edit-blog-content{
+    font-family: $main-font-family;
+    line-height: 1.6;
+    font-size: 17px;
+    margin-bottom: 30px;
+    height: 300px;
+}
+.edit-blog-content.dark{
+    background-color: $darkTheme-primary;
+    color: $lightTheme-primary;
+}
