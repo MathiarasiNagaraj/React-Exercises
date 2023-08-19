@@ -11,7 +11,7 @@ export const DEFAULT_USER_IMAGE = {
 }
 
 export const WARNING = {
-    message: "Are you sure,want to Exit ?",
+    message: "Are you sure you want to exit without saving your changes?",
     title: "Title should be Maximum of 20 words and minimum of 1 word",
     content: "Content should be Maximum of 200 words and minimum of 10 words",
     title_exist:"Given Title already exists"

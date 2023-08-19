@@ -8,7 +8,7 @@ import BlogSnippetCard from "../../components/blogSnippetCard/BlogSnippetCard";
 import { useDispatch, useSelector } from "react-redux";
 import { ModalAction } from "../../store/ModalSlice";
 import { BlogAction } from "../../store/BlogSlice";
-import { NO_BLOGS } from "../../constants/GeneralConstant";
+import { NO_BLOGS, WARNING } from "../../constants/GeneralConstant";
 
 
 const BlogSnippets = (props) => {
@@ -18,7 +18,17 @@ const BlogSnippets = (props) => {
 
     //on clicking card ,triggering selected card function 
   const onBlogSelectHandler = (data) => {
-    dispatch(BlogAction.changeSelectedBlog(data));
+    if (isEdit) {
+      const data = {
+        message: WARNING.message,
+        type: "edit",
+      }
+
+      dispatch(ModalAction.showWarningModal(data));
+    }
+      else {
+      dispatch(BlogAction.changeSelectedBlog(data));
+    }
   };
 
     //mapping blogs from reverse 
@@ -38,22 +48,12 @@ const BlogSnippets = (props) => {
   const onAddNewBlogHandler = () => {
     dispatch(ModalAction.showAddNewBlogModal());
   };
-    //when edit mode on mouse over ,popping up warning modal
-  const onMouseOverHandler = () => {
-    if (isEdit) {
-      const data = {
-        message: "Willing to Exit ?",
-        type: "edit",
-      };
 
-      dispatch(ModalAction.showWarningModal(data));
-    }
-  };
   return (
    
       <div
         className={`${styles["blog-snippets"]} ${styles[theme]}`}
-        onMouseEnter={onMouseOverHandler}
+
       >
   
     

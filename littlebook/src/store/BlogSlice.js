@@ -20,7 +20,7 @@ const BlogSlice = createSlice({
       const filtertypes = [];
       let blogs = action.payload;
       //adding id to all blogs to identify
-      blogs = blogs.map((obj, index) => ({
+      blogs = blogs?.map((obj, index) => ({
         ...obj,
         id: index + 1,
       }));
@@ -29,11 +29,11 @@ const BlogSlice = createSlice({
       state.blogs = blogs;
       state.AllBlogs = blogs;
       //to set first blog as selected blog for blog Article
-      state.selectedBlog = state.blogs[state.AllBlogs.length - 1];
+      state.selectedBlog = state.blogs[state.AllBlogs?.length - 1];
 
       //extracting type from blogs and adding in filter type without repeating
       state.blogs.map((blog) => {
-        const exist = filtertypes.some((item) => item.type === blog.type);
+        const exist = filtertypes?.some((item) => item.type === blog.type);
         if (!exist) {
           //initially all blog should to chechked
           filtertypes.push({ type: blog.type, isChecked: true });
@@ -45,35 +45,36 @@ const BlogSlice = createSlice({
     add(state, action) {
       let newBlog = action.payload;
       //adding id as length+1 for new blog data
+      //random image
       let randomImage = "https://source.unsplash.com/random/800x600";
       newBlog = {
         ...newBlog,
         id: state.AllBlogs.length + 1,
         photo: randomImage,
       };
-      state.blogs.push(newBlog);
+ //pushing new blog to all blogs
+ state.AllBlogs.push(newBlog);
+ state.blogs.push(newBlog);
       //adding type to filter type array
       const exist = state.filterType.some((item) => item.type === newBlog.type);
-      
+
+      //if the type is not in filtertype then add and if filterEmpty is true ,false it
+      //and make current blog as selected
       if (!exist) {
         state.filterType.push({ type: newBlog.type, isChecked: true });
+        state.selectedBlog = state.AllBlogs[newBlog.id - 1];
         if (state.filterEmpty) {
           state.filterEmpty = false;
-}
-
+        }
       }
-      //pushing new blog to all blogs
-      state.AllBlogs.push(newBlog);
+     
 
-      const isChechked = state.filterType.some(
+      const isChecked = state.filterType.some(
         (item) => item.type === newBlog.type && item.isChecked === true
       );
-      if (exist && isChechked) {
+      if (exist && isChecked) {
         state.selectedBlog = state.AllBlogs[newBlog.id - 1];
-      } 
-
-
-    
+      }
     },
     //editing blog content
     edit(state, action) {
@@ -112,7 +113,7 @@ const BlogSlice = createSlice({
         (item) => !item.isChecked
       );
 
-      console.log(allTypesUnchecked,"all");
+      console.log(allTypesUnchecked, "all");
 
       if (!allTypesUnchecked) {
         state.filterEmpty = false;
