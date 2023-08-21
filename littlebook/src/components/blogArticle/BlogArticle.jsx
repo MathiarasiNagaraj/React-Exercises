@@ -16,8 +16,8 @@ import { NO_BLOGS, WARNING } from "../../constants/GeneralConstant";
 const BlogArticle = (props) => {
   const {isAllFilterUnchecked}=props
   const selectedBlog = useSelector(state => state.blog.selectedBlog)
-  console.log(selectedBlog);
   const { title, type, details, photo, id } = selectedBlog;
+  
   const [EditedTitle, setEditedTitle] = useState(title);
   const [EditedContent, setEditedContent] = useState(details);
   const editMode = useSelector((state) => state.blog.isEditMode);
@@ -101,9 +101,10 @@ const BlogArticle = (props) => {
           {NO_BLOGS.message}
       </div> :
         <div className={styles["blog-article"]}>
-          <ImageBox src={photo} alt={title} styleName="blog" />
+        
           {!editMode ? (
             <>
+                <ImageBox src={photo} alt={title} styleName="blog" />
               <h1>{title}</h1>
               <p>{details}</p>
 
@@ -114,6 +115,9 @@ const BlogArticle = (props) => {
               />
             </>
           ) : (
+              <>
+                <ImageBox src={photo} alt={title} styleName="blog" />
+              
             <form className={styles["edit-form"]} onSubmit={onSubmitHandler}>
               <InputBox
                 value={EditedTitle}
@@ -133,7 +137,8 @@ const BlogArticle = (props) => {
                 />
                 <Button name={SAVE.name} styleName="save-btn" />
               </div>
-            </form>
+                </form>
+                </>
           )}
         </div>}
       </>

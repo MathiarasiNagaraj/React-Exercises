@@ -13,6 +13,7 @@ const BlogSlice = createSlice({
     isValid: true,
     message: "",
     filterEmpty: false,
+    selectedBlogInEdit:{}
   },
   reducers: {
     //initially fetch data from API and Store
@@ -113,7 +114,7 @@ const BlogSlice = createSlice({
         (item) => !item.isChecked
       );
 
-      console.log(allTypesUnchecked, "all");
+     // console.log(allTypesUnchecked, "all");
 
       if (!allTypesUnchecked) {
         state.filterEmpty = false;
@@ -136,11 +137,21 @@ const BlogSlice = createSlice({
     //searching blog data
     search(state, action) {
       const searchFilteredBlogs = [];
-      console.log(state.blogs);
-      const initialState = state.blogs;
+    //  console.log(state.blogs);
+      
+      const filteredBlogs = [];
+      state.AllBlogs.forEach((blog) => {
+        const exist = state.filterType.some(
+          (item) => item.type === blog.type && item.isChecked === true
+        );
+        if (exist) filteredBlogs.push(blog);
+      })
+      const initialState = filteredBlogs;
       let searchTerm = action.payload;
       searchTerm = searchTerm.toLowerCase();
+    
       //fetching if title or details contains the search term
+      
       initialState.forEach((blog) => {
         if (
           blog.title.toLowerCase().includes(searchTerm) ||
@@ -166,6 +177,9 @@ const BlogSlice = createSlice({
     changeSelectedBlog(state, action) {
       state.selectedBlog = action.payload;
     },
+    changeSelectedBlogInEdit(state, action) {
+      state.selectedBlogInEdit = action.payload;
+    }
   },
 });
 

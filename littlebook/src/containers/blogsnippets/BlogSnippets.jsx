@@ -15,20 +15,24 @@ const BlogSnippets = (props) => {
   const { isAllFilterUnchecked }=props
     const blogs = useSelector(state => state.blog.blogs);
   const isEdit = useSelector((state) => state.blog.isEditMode);
-
+  const [selectedCard, setSelectedCard] = useState({});
     //on clicking card ,triggering selected card function 
-  const onBlogSelectHandler = (data) => {
+  const onBlogSelectHandler = (blog) => {
     if (isEdit) {
       const data = {
         message: WARNING.message,
         type: "edit",
-      }
 
+      }
+  
+      dispatch(BlogAction.changeSelectedBlogInEdit(blog))
       dispatch(ModalAction.showWarningModal(data));
     }
-      else {
-      dispatch(BlogAction.changeSelectedBlog(data));
+else{
+      dispatch(BlogAction.changeSelectedBlog(blog));
     }
+    
+    
   };
 
     //mapping blogs from reverse 

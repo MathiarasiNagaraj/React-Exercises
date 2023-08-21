@@ -13,12 +13,13 @@ const PopUpModal = () => {
   const warningType = useSelector((state) => state.modal.warningType);
   const mode = useSelector((state) => state.modal.isshowWarningModal);
   const theme = useSelector((state) => state.theme.mode);
-
+  const blog = useSelector(state => state.blog.selectedBlogInEdit);
   //handling exit event
   const onExitHandler = () => {
     //if it is add ,
     //close warning pop up modal
     //close add modal
+
     if (warningType === "add") {
       dispatch(ModalAction.closeWarningModal());
       dispatch(ModalAction.hideAddNewBlogModal());
@@ -29,7 +30,9 @@ const PopUpModal = () => {
       dispatch(ModalAction.closeWarningModal());
 
       dispatch(BlogAction.setEditMode(false));
+      dispatch(BlogAction.changeSelectedBlog(blog))
     }
+
   };
   //handling cancel event
   const onClosePopModalHandler = () => {
